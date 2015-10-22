@@ -1,0 +1,37 @@
+$SC:#00087C;
+$AU:#F7AD32;
+$NZ:#000000;
+$FR:#2B4BC7;
+$SA:#063D1E;
+$AR:#27B2E8;
+$IE:#006843;
+$WA:#D90037;
+$JP:#EF001D;
+$US:#001442;
+$NA:#000F79;
+$CA:#FF0017;
+$TO:#F50C2B;
+$GE:#090909;
+$UR:#4994E1;
+$EN:#ED2738;
+$FJ:#696969;
+$IT:#008CC9;
+$WS:#0043A2;
+$RO:#FFD041;
+
+$countries-list: SC, AU, NZ, FR, SA, AR, IE, WA, JP, US, NA, CA, TO, GE, UR, EN, FJ, IT, WS, RO;
+$colors-list: $SC, $AU, $NZ, $FR, $SA, $AR, $IE, $WA, $JP, $US, $NA, $CA, $TO, $GE, $UR, $EN, $FJ, $IT, $WS, $RO;
+@each $current-color in $colors-list {
+    $i: index($colors-list, $current-color);
+    g.#{nth($countries-list, $i)} {
+    	path {
+    		stroke: $current-color;	
+    	}
+        circle {
+        	fill: $current-color;
+        }
+        text.team-name {
+        	fill: $current-color;	
+        }
+    }
+}

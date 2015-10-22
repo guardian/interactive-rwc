@@ -1,0 +1,124 @@
+.match {
+	
+	width:100%;
+	height:200px;
+
+	svg {
+		width:100%;
+		height:100%;	
+		
+		text {
+			@include fs-textSans(1);
+		}
+
+		.teams {
+			.team {
+				path {
+					fill:none;
+					stroke-width:2;
+					shape-rendering: crispEdges;
+				}
+
+				.events {
+					.event {
+						&.yellow-card {
+							rect {
+								fill:#ffd041;
+							}
+						}
+						&.red-card {
+							rect {
+								fill:#ff1c58;
+							}
+						}
+					}
+				}
+
+			}	
+		}
+
+		.axes {
+			.x.axis {
+				path,line {
+					fill:none;
+					shape-rendering: crispEdges;
+					stroke:#ccc;
+				}
+				path {
+					//display: none;
+				}
+
+				.tick {
+					line {
+						//display: none;
+					}
+					text {
+						//display: none;
+					}
+				}
+				.tick.main {
+					text {
+						display: block;
+					}
+				}
+				text {
+					fill: #ccc;
+					font-size: 11px;
+				}
+				
+			}
+		}
+	}
+	
+	&.small {
+		
+		height: 100px;
+		
+		.teams {
+			.team {
+				path {
+					stroke-width:1;
+					
+				}
+				
+				
+			}	
+		}
+		.axes {
+			.x.axis {
+				display: none;
+			}
+		}
+	}
+	&.gray2 {
+		
+		
+		.teams {
+			.team {
+				path {
+					
+					stroke:#ccc;
+				}
+				circle {
+					fill:#ccc;
+				}
+				text {
+					fill:#767676;
+				}
+				&.winner {
+					path {
+						stroke:#333;
+					}	
+					text {
+						fill:#000;
+					}
+					circle {
+						fill:#333;
+					}
+				}
+			}	
+		}
+		
+	}
+
+}

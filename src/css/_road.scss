@@ -1,0 +1,27 @@
+.road {
+	
+	height: 50px;
+
+	&.sf2f {
+		width:calc(100% - 30px);
+		margin:0 15px;
+	}
+	&.qf2sf {
+		width:calc(100%);
+		margin:0;
+	}
+	
+
+	svg {
+		width: 100%;
+		height: 100%;
+
+		line {
+			fill:none;
+			stroke:#767676;
+			stroke-width:2;
+			shape-rendering: crispEdges;
+		}
+
+	}
+}

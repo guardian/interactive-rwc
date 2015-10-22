@@ -1,0 +1,94 @@
+#rwc {
+	
+	min-height:1px;
+	overflow:hidden;
+	
+	h1,h2,h3,h4,h5,h6 {
+		font-family: $f-serif-text;
+	}
+	.matches {
+		overflow: hidden;
+	}
+	.pools {
+		overflow: hidden;
+		.contents {
+			padding-top:50px;
+		}
+		.pool {
+			width:100%;
+			padding:10px 0 0;
+			margin-bottom:60px;
+			
+			&:first-child {
+				border-left:none;
+			}
+
+			.matches {
+				overflow: hidden;
+				.match {
+					margin:10px 0;
+					width: 20%;
+					float: left;
+				}	
+			}
+			
+		}
+	}
+	/*
+	.pools {
+		overflow: hidden;
+		.pool {
+			float:left;
+			width:calc(25% - 41px);
+			margin:0 10px;
+			padding:0 10px;
+			border-left:1px solid #ddd;
+			
+			&:first-child {
+				border-left:none;
+			}
+
+			.matches {
+				overflow: hidden;
+				.match {
+					margin-top:20px;
+					width: 50%;
+					float: left;
+				}	
+			}
+			
+		}
+	}
+	*/
+
+	.quarter-finals {
+		overflow: hidden;
+		.matches {
+			.match {
+				width:calc(50% - 20px);
+				margin:0px 10px 30px;
+				float:left;
+			}
+		}
+	}
+	.semi-finals {
+		overflow: hidden;
+		.matches {
+			.match {
+				width:calc(50% - 30px);
+				margin:0 15px;
+				height:250px;
+				float:left;
+			}
+		}
+	}
+	.final {
+		.matches {
+			.match {
+				width:90%;
+				height:300px;
+				margin:0 auto;
+			}
+		}
+	}
+}

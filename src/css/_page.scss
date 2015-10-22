@@ -1,0 +1,68 @@
+body {
+	@include fs-bodyCopy(1);
+}
+.section {
+	position: relative;
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+	
+
+	@include mq(tablet) {
+		margin-bottom:25px;
+		padding-bottom:25px;
+	}
+
+    > div {
+    	float:left;
+    }
+
+    .intro {
+		h2 {
+			font-size:20px;	
+		}
+    	
+		@include mq(tablet) {
+			width:25%;
+
+			.pool-intro {
+				height:300px;
+			}
+		}
+
+
+    }
+    .contents {
+    	@include mq(tablet) {
+			width:75%;
+		}
+    }
+
+    table.table-pool {
+    	@include fs-textSans(1);
+    	width:90%;
+    	th:first-child{
+    		text-align:left;
+    	}
+    	th {
+    		color:#000;
+    	}
+    	th:last-child {
+    		color:#000;
+    	}
+    	td {
+    		text-align: center;
+    	}
+    	td:first-child {
+    		text-align:left;
+    		font-weight: bold;
+    	}
+    	td:last-child {
+    		font-weight: bold;
+    	}
+    	tr:nth-child(odd) {
+    		td {
+    			color:#767676;
+    		}
+    	}
+    }
+}

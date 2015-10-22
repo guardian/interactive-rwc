@@ -1,0 +1,1718 @@
+{
+    "fixtures": {
+        "fixture": [
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "35",
+                        "_home_or_away": "home",
+                        "_score": "35",
+                        "_team_id": "550"
+                    },
+                    {
+                        "_eighty_min_score": "11",
+                        "_home_or_away": "away",
+                        "_score": "11",
+                        "_team_id": "954"
+                    }
+                ],
+                "_id": "101501",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-18T19:00:00+0000",
+                "_game_date": "20150918",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "10",
+                        "_home_or_away": "home",
+                        "_score": "10",
+                        "_team_id": "750"
+                    },
+                    {
+                        "_eighty_min_score": "17",
+                        "_home_or_away": "away",
+                        "_score": "17",
+                        "_team_id": "2850"
+                    }
+                ],
+                "_id": "101502",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-19T11:00:00+0000",
+                "_game_date": "20150919",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "12:00:00",
+                "_venue": "Kingsholm",
+                "_venue_id": "30"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "",
+                        "_home_or_away": "home",
+                        "_score": "50",
+                        "_team_id": "600"
+                    },
+                    {
+                        "_eighty_min_score": "",
+                        "_home_or_away": "away",
+                        "_score": "7",
+                        "_team_id": "953"
+                    }
+                ],
+                "_id": "101503",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-19T13:30:00+0000",
+                "_game_date": "20150919",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "Millennium Stadium",
+                "_venue_id": "4"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "32",
+                        "_home_or_away": "home",
+                        "_score": "32",
+                        "_team_id": "900"
+                    },
+                    {
+                        "_eighty_min_score": "34",
+                        "_home_or_away": "away",
+                        "_score": "34",
+                        "_team_id": "3000"
+                    }
+                ],
+                "_id": "101504",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-19T15:45:00+0000",
+                "_game_date": "20150919",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Brighton Community Stadium",
+                "_venue_id": "306"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "32",
+                        "_home_or_away": "home",
+                        "_score": "32",
+                        "_team_id": "650"
+                    },
+                    {
+                        "_eighty_min_score": "10",
+                        "_home_or_away": "away",
+                        "_score": "10",
+                        "_team_id": "952"
+                    }
+                ],
+                "_id": "101505",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-19T19:00:00+0000",
+                "_game_date": "20150919",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "25",
+                        "_home_or_away": "home",
+                        "_score": "25",
+                        "_team_id": "950"
+                    },
+                    {
+                        "_eighty_min_score": "16",
+                        "_home_or_away": "away",
+                        "_score": "16",
+                        "_team_id": "2950"
+                    }
+                ],
+                "_id": "101506",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-20T11:00:00+0000",
+                "_game_date": "20150920",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "12:00:00",
+                "_venue": "Brighton Community Stadium",
+                "_venue_id": "306"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "54",
+                        "_home_or_away": "home",
+                        "_score": "54",
+                        "_team_id": "500"
+                    },
+                    {
+                        "_eighty_min_score": "9",
+                        "_home_or_away": "away",
+                        "_score": "9",
+                        "_team_id": "2800"
+                    }
+                ],
+                "_id": "101507",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-20T13:30:00+0000",
+                "_game_date": "20150920",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "Millennium Stadium",
+                "_venue_id": "4"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "26",
+                        "_home_or_away": "home",
+                        "_score": "26",
+                        "_team_id": "850"
+                    },
+                    {
+                        "_eighty_min_score": "16",
+                        "_home_or_away": "away",
+                        "_score": "16",
+                        "_team_id": "800"
+                    }
+                ],
+                "_id": "101508",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-20T15:45:00+0000",
+                "_game_date": "20150920",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Wembley Stadium",
+                "_venue_id": "149"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "45",
+                        "_home_or_away": "home",
+                        "_score": "45",
+                        "_team_id": "700"
+                    },
+                    {
+                        "_eighty_min_score": "10",
+                        "_home_or_away": "away",
+                        "_score": "10",
+                        "_team_id": "3000"
+                    }
+                ],
+                "_id": "101509",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-23T13:30:00+0000",
+                "_game_date": "20150923",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "Kingsholm",
+                "_venue_id": "30"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "28",
+                        "_home_or_away": "home",
+                        "_score": "28",
+                        "_team_id": "100"
+                    },
+                    {
+                        "_eighty_min_score": "13",
+                        "_home_or_away": "away",
+                        "_score": "13",
+                        "_team_id": "954"
+                    }
+                ],
+                "_id": "101510",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-23T15:45:00+0000",
+                "_game_date": "20150923",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Millennium Stadium",
+                "_venue_id": "4"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "38",
+                        "_home_or_away": "home",
+                        "_score": "38",
+                        "_team_id": "650"
+                    },
+                    {
+                        "_eighty_min_score": "11",
+                        "_home_or_away": "away",
+                        "_score": "11",
+                        "_team_id": "951"
+                    }
+                ],
+                "_id": "101511",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-23T19:00:00+0000",
+                "_game_date": "20150923",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "The Stadium, Queen Elizabeth Olympic Park",
+                "_venue_id": "307"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "58",
+                        "_home_or_away": "home",
+                        "_score": "58",
+                        "_team_id": "850"
+                    },
+                    {
+                        "_eighty_min_score": "14",
+                        "_home_or_away": "away",
+                        "_score": "14",
+                        "_team_id": "2900"
+                    }
+                ],
+                "_id": "101512",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-24T19:00:00+0000",
+                "_game_date": "20150924",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "The Stadium, Queen Elizabeth Olympic Park",
+                "_venue_id": "307"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "54",
+                        "_home_or_away": "home",
+                        "_score": "54",
+                        "_team_id": "800"
+                    },
+                    {
+                        "_eighty_min_score": "9",
+                        "_home_or_away": "away",
+                        "_score": "9",
+                        "_team_id": "2850"
+                    }
+                ],
+                "_id": "101513",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-25T15:45:00+0000",
+                "_game_date": "20150925",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Kingsholm",
+                "_venue_id": "30"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "23",
+                        "_home_or_away": "home",
+                        "_score": "23",
+                        "_team_id": "952"
+                    },
+                    {
+                        "_eighty_min_score": "18",
+                        "_home_or_away": "away",
+                        "_score": "18",
+                        "_team_id": "953"
+                    }
+                ],
+                "_id": "101514",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-26T13:30:00+0000",
+                "_game_date": "20150926",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "Elland Road",
+                "_venue_id": "308"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "46",
+                        "_home_or_away": "home",
+                        "_score": "46",
+                        "_team_id": "900"
+                    },
+                    {
+                        "_eighty_min_score": "6",
+                        "_home_or_away": "away",
+                        "_score": "6",
+                        "_team_id": "950"
+                    }
+                ],
+                "_id": "101515",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-26T15:45:00+0000",
+                "_game_date": "20150926",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Villa Park",
+                "_venue_id": "309"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "25",
+                        "_home_or_away": "home",
+                        "_score": "25",
+                        "_team_id": "550"
+                    },
+                    {
+                        "_eighty_min_score": "28",
+                        "_home_or_away": "away",
+                        "_score": "28",
+                        "_team_id": "500"
+                    }
+                ],
+                "_id": "101516",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-26T19:00:00+0000",
+                "_game_date": "20150926",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "65",
+                        "_home_or_away": "home",
+                        "_score": "65",
+                        "_team_id": "100"
+                    },
+                    {
+                        "_eighty_min_score": "3",
+                        "_home_or_away": "away",
+                        "_score": "3",
+                        "_team_id": "2800"
+                    }
+                ],
+                "_id": "101517",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-27T11:00:00+0000",
+                "_game_date": "20150927",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "12:00:00",
+                "_venue": "Villa Park",
+                "_venue_id": "309"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "39",
+                        "_home_or_away": "home",
+                        "_score": "39",
+                        "_team_id": "700"
+                    },
+                    {
+                        "_eighty_min_score": "16",
+                        "_home_or_away": "away",
+                        "_score": "16",
+                        "_team_id": "2950"
+                    }
+                ],
+                "_id": "101518",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-27T13:30:00+0000",
+                "_game_date": "20150927",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "Elland Road",
+                "_venue_id": "308"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "44",
+                        "_home_or_away": "home",
+                        "_score": "44",
+                        "_team_id": "600"
+                    },
+                    {
+                        "_eighty_min_score": "10",
+                        "_home_or_away": "away",
+                        "_score": "10",
+                        "_team_id": "951"
+                    }
+                ],
+                "_id": "101519",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-27T15:45:00+0000",
+                "_game_date": "20150927",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Wembley Stadium",
+                "_venue_id": "149"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "35",
+                        "_home_or_away": "home",
+                        "_score": "35",
+                        "_team_id": "750"
+                    },
+                    {
+                        "_eighty_min_score": "21",
+                        "_home_or_away": "away",
+                        "_score": "21",
+                        "_team_id": "2900"
+                    }
+                ],
+                "_id": "101520",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-09-29T15:45:00+0000",
+                "_game_date": "20150929",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Sandy Park",
+                "_venue_id": "209"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "23",
+                        "_home_or_away": "home",
+                        "_score": "23",
+                        "_team_id": "500"
+                    },
+                    {
+                        "_eighty_min_score": "13",
+                        "_home_or_away": "away",
+                        "_score": "13",
+                        "_team_id": "954"
+                    }
+                ],
+                "_id": "101521",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-01T15:45:00+0000",
+                "_game_date": "20151001",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Millennium Stadium",
+                "_venue_id": "4"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "41",
+                        "_home_or_away": "home",
+                        "_score": "41",
+                        "_team_id": "650"
+                    },
+                    {
+                        "_eighty_min_score": "18",
+                        "_home_or_away": "away",
+                        "_score": "18",
+                        "_team_id": "953"
+                    }
+                ],
+                "_id": "101522",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-01T19:00:00+0000",
+                "_game_date": "20151001",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "stadium:mk",
+                "_venue_id": "220"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "43",
+                        "_home_or_away": "home",
+                        "_score": "43",
+                        "_team_id": "850"
+                    },
+                    {
+                        "_eighty_min_score": "10",
+                        "_home_or_away": "away",
+                        "_score": "10",
+                        "_team_id": "2850"
+                    }
+                ],
+                "_id": "101523",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-02T19:00:00+0000",
+                "_game_date": "20151002",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "Millennium Stadium",
+                "_venue_id": "4"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "5",
+                        "_home_or_away": "home",
+                        "_score": "5",
+                        "_team_id": "950"
+                    },
+                    {
+                        "_eighty_min_score": "26",
+                        "_home_or_away": "away",
+                        "_score": "26",
+                        "_team_id": "3000"
+                    }
+                ],
+                "_id": "101524",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-03T13:30:00+0000",
+                "_game_date": "20151003",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "stadium:mk",
+                "_venue_id": "220"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "34",
+                        "_home_or_away": "home",
+                        "_score": "34",
+                        "_team_id": "900"
+                    },
+                    {
+                        "_eighty_min_score": "16",
+                        "_home_or_away": "away",
+                        "_score": "16",
+                        "_team_id": "700"
+                    }
+                ],
+                "_id": "101525",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-03T15:45:00+0000",
+                "_game_date": "20151003",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "St James' Park",
+                "_venue_id": "310"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "13",
+                        "_home_or_away": "home",
+                        "_score": "13",
+                        "_team_id": "550"
+                    },
+                    {
+                        "_eighty_min_score": "33",
+                        "_home_or_away": "away",
+                        "_score": "33",
+                        "_team_id": "100"
+                    }
+                ],
+                "_id": "101526",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-03T19:00:00+0000",
+                "_game_date": "20151003",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "45",
+                        "_home_or_away": "home",
+                        "_score": "45",
+                        "_team_id": "800"
+                    },
+                    {
+                        "_eighty_min_score": "16",
+                        "_home_or_away": "away",
+                        "_score": "16",
+                        "_team_id": "750"
+                    }
+                ],
+                "_id": "101527",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-04T13:30:00+0000",
+                "_game_date": "20151004",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "Leicester City Stadium",
+                "_venue_id": "155"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "16",
+                        "_home_or_away": "home",
+                        "_score": "16",
+                        "_team_id": "600"
+                    },
+                    {
+                        "_eighty_min_score": "9",
+                        "_home_or_away": "away",
+                        "_score": "9",
+                        "_team_id": "952"
+                    }
+                ],
+                "_id": "101528",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-04T15:45:00+0000",
+                "_game_date": "20151004",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "The Stadium, Queen Elizabeth Olympic Park",
+                "_venue_id": "307"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "15",
+                        "_home_or_away": "home",
+                        "_score": "15",
+                        "_team_id": "953"
+                    },
+                    {
+                        "_eighty_min_score": "17",
+                        "_home_or_away": "away",
+                        "_score": "17",
+                        "_team_id": "951"
+                    }
+                ],
+                "_id": "101529",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-06T15:45:00+0000",
+                "_game_date": "20151006",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Leicester City Stadium",
+                "_venue_id": "155"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "47",
+                        "_home_or_away": "home",
+                        "_score": "47",
+                        "_team_id": "954"
+                    },
+                    {
+                        "_eighty_min_score": "15",
+                        "_home_or_away": "away",
+                        "_score": "15",
+                        "_team_id": "2800"
+                    }
+                ],
+                "_id": "101530",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-06T19:00:00+0000",
+                "_game_date": "20151006",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "stadium:mk",
+                "_venue_id": "220"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "64",
+                        "_home_or_away": "home",
+                        "_score": "64",
+                        "_team_id": "900"
+                    },
+                    {
+                        "_eighty_min_score": "0",
+                        "_home_or_away": "away",
+                        "_score": "0",
+                        "_team_id": "2950"
+                    }
+                ],
+                "_id": "101531",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-07T15:45:00+0000",
+                "_game_date": "20151007",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "The Stadium, Queen Elizabeth Olympic Park",
+                "_venue_id": "307"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "16",
+                        "_home_or_away": "home",
+                        "_score": "16",
+                        "_team_id": "2900"
+                    },
+                    {
+                        "_eighty_min_score": "17",
+                        "_home_or_away": "away",
+                        "_score": "17",
+                        "_team_id": "2850"
+                    }
+                ],
+                "_id": "101532",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-07T19:00:00+0000",
+                "_game_date": "20151007",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "Sandy Park",
+                "_venue_id": "209"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "47",
+                        "_home_or_away": "home",
+                        "_score": "47",
+                        "_team_id": "850"
+                    },
+                    {
+                        "_eighty_min_score": "9",
+                        "_home_or_away": "away",
+                        "_score": "9",
+                        "_team_id": "750"
+                    }
+                ],
+                "_id": "101533",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-09T19:00:00+0000",
+                "_game_date": "20151009",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "St James' Park",
+                "_venue_id": "310"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "33",
+                        "_home_or_away": "home",
+                        "_score": "33",
+                        "_team_id": "950"
+                    },
+                    {
+                        "_eighty_min_score": "36",
+                        "_home_or_away": "away",
+                        "_score": "36",
+                        "_team_id": "700"
+                    }
+                ],
+                "_id": "101534",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-10T13:30:00+0000",
+                "_game_date": "20151010",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "St James' Park",
+                "_venue_id": "310"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "15",
+                        "_home_or_away": "home",
+                        "_score": "15",
+                        "_team_id": "100"
+                    },
+                    {
+                        "_eighty_min_score": "6",
+                        "_home_or_away": "away",
+                        "_score": "6",
+                        "_team_id": "500"
+                    }
+                ],
+                "_id": "101535",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-10T15:45:00+0000",
+                "_game_date": "20151010",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "60",
+                        "_home_or_away": "home",
+                        "_score": "60",
+                        "_team_id": "550"
+                    },
+                    {
+                        "_eighty_min_score": "3",
+                        "_home_or_away": "away",
+                        "_score": "3",
+                        "_team_id": "2800"
+                    }
+                ],
+                "_id": "101536",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-10T19:00:00+0000",
+                "_game_date": "20151010",
+                "_group": "A",
+                "_group_name": "A",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "City of Manchester Stadium",
+                "_venue_id": "311"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "64",
+                        "_home_or_away": "home",
+                        "_score": "64",
+                        "_team_id": "800"
+                    },
+                    {
+                        "_eighty_min_score": "19",
+                        "_home_or_away": "away",
+                        "_score": "19",
+                        "_team_id": "2900"
+                    }
+                ],
+                "_id": "101537",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-11T11:00:00+0000",
+                "_game_date": "20151011",
+                "_group": "C",
+                "_group_name": "C",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "12:00:00",
+                "_venue": "Leicester City Stadium",
+                "_venue_id": "155"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "32",
+                        "_home_or_away": "home",
+                        "_score": "32",
+                        "_team_id": "952"
+                    },
+                    {
+                        "_eighty_min_score": "22",
+                        "_home_or_away": "away",
+                        "_score": "22",
+                        "_team_id": "951"
+                    }
+                ],
+                "_id": "101538",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-11T13:30:00+0000",
+                "_game_date": "20151011",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "14:30:00",
+                "_venue": "Sandy Park",
+                "_venue_id": "209"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "9",
+                        "_home_or_away": "home",
+                        "_score": "9",
+                        "_team_id": "650"
+                    },
+                    {
+                        "_eighty_min_score": "24",
+                        "_home_or_away": "away",
+                        "_score": "24",
+                        "_team_id": "600"
+                    }
+                ],
+                "_id": "101539",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-11T15:45:00+0000",
+                "_game_date": "20151011",
+                "_group": "D",
+                "_group_name": "D",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:45:00",
+                "_venue": "Millennium Stadium",
+                "_venue_id": "4"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "18",
+                        "_home_or_away": "home",
+                        "_score": "18",
+                        "_team_id": "2950"
+                    },
+                    {
+                        "_eighty_min_score": "28",
+                        "_home_or_away": "away",
+                        "_score": "28",
+                        "_team_id": "3000"
+                    }
+                ],
+                "_id": "101540",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-11T19:00:00+0000",
+                "_game_date": "20151011",
+                "_group": "B",
+                "_group_name": "B",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "1",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "Kingsholm",
+                "_venue_id": "30"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "23",
+                        "_home_or_away": "home",
+                        "_score": "23",
+                        "_team_id": "900"
+                    },
+                    {
+                        "_eighty_min_score": "19",
+                        "_home_or_away": "away",
+                        "_score": "19",
+                        "_team_id": "500"
+                    }
+                ],
+                "_id": "101541",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-17T15:00:00+0000",
+                "_game_date": "20151017",
+                "_group": "QF",
+                "_group_name": "QF",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "2",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "62",
+                        "_home_or_away": "home",
+                        "_score": "62",
+                        "_team_id": "850"
+                    },
+                    {
+                        "_eighty_min_score": "13",
+                        "_home_or_away": "away",
+                        "_score": "13",
+                        "_team_id": "650"
+                    }
+                ],
+                "_id": "101542",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-17T19:00:00+0000",
+                "_game_date": "20151017",
+                "_group": "QF",
+                "_group_name": "QF",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "2",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "20:00:00",
+                "_venue": "Millennium Stadium",
+                "_venue_id": "4"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "20",
+                        "_home_or_away": "home",
+                        "_score": "20",
+                        "_team_id": "600"
+                    },
+                    {
+                        "_eighty_min_score": "43",
+                        "_home_or_away": "away",
+                        "_score": "43",
+                        "_team_id": "800"
+                    }
+                ],
+                "_id": "101543",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-18T12:00:00+0000",
+                "_game_date": "20151018",
+                "_group": "QF",
+                "_group_name": "QF",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "2",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "13:00:00",
+                "_venue": "Millennium Stadium",
+                "_venue_id": "4"
+            },
+            {
+                "team": [
+                    {
+                        "_eighty_min_score": "35",
+                        "_home_or_away": "home",
+                        "_score": "35",
+                        "_team_id": "100"
+                    },
+                    {
+                        "_eighty_min_score": "34",
+                        "_home_or_away": "away",
+                        "_score": "34",
+                        "_team_id": "700"
+                    }
+                ],
+                "_id": "101544",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-18T15:00:00+0000",
+                "_game_date": "20151018",
+                "_group": "QF",
+                "_group_name": "QF",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "2",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_status": "Result",
+                "_time": "16:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_home_or_away": "home",
+                        "_team_id": "900"
+                    },
+                    {
+                        "_home_or_away": "away",
+                        "_team_id": "850"
+                    }
+                ],
+                "_id": "101545",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-24T15:00:00+0000",
+                "_game_date": "20151024",
+                "_group": "SF",
+                "_group_name": "SF",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "2",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_time": "16:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_home_or_away": "home",
+                        "_team_id": "800"
+                    },
+                    {
+                        "_home_or_away": "away",
+                        "_team_id": "100"
+                    }
+                ],
+                "_id": "101546",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-25T16:00:00+0000",
+                "_game_date": "20151025",
+                "_group": "SF",
+                "_group_name": "SF",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "2",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_time": "16:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            },
+            {
+                "team": [
+                    {
+                        "_home_or_away": "home",
+                        "_team_id": "19613"
+                    },
+                    {
+                        "_home_or_away": "away",
+                        "_team_id": "19614"
+                    }
+                ],
+                "_id": "101547",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-30T20:00:00+0000",
+                "_game_date": "20151030",
+                "_group": "PO",
+                "_group_name": "PO",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "2",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_time": "20:00:00",
+                "_venue": "The Stadium, Queen Elizabeth Olympic Park",
+                "_venue_id": "307"
+            },
+            {
+                "team": [
+                    {
+                        "_home_or_away": "home",
+                        "_team_id": "19611"
+                    },
+                    {
+                        "_home_or_away": "away",
+                        "_team_id": "19612"
+                    }
+                ],
+                "_id": "101548",
+                "_comp_id": "210",
+                "_comp_name": "Rugby World Cup",
+                "_datetime": "2015-10-31T16:00:00+0000",
+                "_game_date": "20151031",
+                "_group": "Final",
+                "_group_name": "Final",
+                "_leg": "1",
+                "_live_scores": "11",
+                "_public": "1",
+                "_round": "2",
+                "_round_type_id": "1",
+                "_season_id": "2016",
+                "_stage": "1",
+                "_time": "16:00:00",
+                "_venue": "Twickenham",
+                "_venue_id": "38"
+            }
+        ],
+        "teams": {
+            "team": [
+                {
+                    "_id": "100",
+                    "_name": "Australia"
+                },
+                {
+                    "_id": "500",
+                    "_name": "Wales"
+                },
+                {
+                    "_id": "550",
+                    "_name": "England"
+                },
+                {
+                    "_id": "600",
+                    "_name": "Ireland"
+                },
+                {
+                    "_id": "650",
+                    "_name": "France"
+                },
+                {
+                    "_id": "700",
+                    "_name": "Scotland"
+                },
+                {
+                    "_id": "750",
+                    "_name": "Tonga"
+                },
+                {
+                    "_id": "800",
+                    "_name": "Argentina"
+                },
+                {
+                    "_id": "850",
+                    "_name": "New Zealand"
+                },
+                {
+                    "_id": "900",
+                    "_name": "South Africa"
+                },
+                {
+                    "_id": "950",
+                    "_name": "Samoa"
+                },
+                {
+                    "_id": "951",
+                    "_name": "Romania"
+                },
+                {
+                    "_id": "952",
+                    "_name": "Italy"
+                },
+                {
+                    "_id": "953",
+                    "_name": "Canada"
+                },
+                {
+                    "_id": "954",
+                    "_name": "Fiji"
+                },
+                {
+                    "_id": "2800",
+                    "_name": "Uruguay"
+                },
+                {
+                    "_id": "2850",
+                    "_name": "Georgia"
+                },
+                {
+                    "_id": "2900",
+                    "_name": "Namibia"
+                },
+                {
+                    "_id": "2950",
+                    "_name": "USA"
+                },
+                {
+                    "_id": "3000",
+                    "_name": "Japan"
+                },
+                {
+                    "_id": "19611",
+                    "_name": "Winner SF1"
+                },
+                {
+                    "_id": "19612",
+                    "_name": "Winner SF2"
+                },
+                {
+                    "_id": "19613",
+                    "_name": "Loser SF1"
+                },
+                {
+                    "_id": "19614",
+                    "_name": "Loser SF2"
+                }
+            ]
+        }
+    }
+}
