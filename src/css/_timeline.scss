@@ -1,0 +1,54 @@
+.match {
+	.timeline {
+		width:100%;
+		height:$timeline_height;
+
+		svg {
+			width:100%;
+			height:100%;
+
+			
+			g.team-timeline {
+
+				text.team-name {
+					text-anchor:end;
+				}
+				line.time {
+					fill:none;
+					stroke:#ccc;
+					stroke-width:1;
+					shape-rendering: crispEdges;
+				}
+			}
+			
+			//ICONS
+			.penalty-icon {
+				fill:none;
+				stroke:#333;
+				stroke-width:1;
+				shape-rendering: crispEdges;
+			}
+			.yellow-card-icon {
+				fill:#ffd041;
+				stroke:none;
+				shape-rendering: crispEdges;
+			}
+			.red-card-icon {
+				fill:#ff1c58;
+				stroke:none;
+				shape-rendering: crispEdges;
+			}
+			.try-icon {
+					fill:#7A4420;
+					stroke:none;
+			}
+			.sub-icon {
+				fill:none;
+				stroke:#333;
+				stroke-width:1;
+				
+			}
+		}
+
+	}
+}

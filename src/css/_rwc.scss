@@ -66,6 +66,7 @@
 		.matches {
 			.match {
 				width:calc(50% - 20px);
+				height:220px;
 				margin:0px 10px 30px;
 				float:left;
 			}
@@ -75,8 +76,8 @@
 		overflow: hidden;
 		.matches {
 			.match {
-				width:calc(50% - 30px);
-				margin:0 15px;
+				width:calc(50% - 10px);
+				margin:0 5px;
 				height:250px;
 				float:left;
 			}

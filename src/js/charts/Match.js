@@ -1,3 +1,4 @@
+import Timeline from './Timeline';
 export default class Match {
 
 	constructor(data,options) {
@@ -23,9 +24,13 @@ export default class Match {
 
 		this.container=d3.select(options.container);
 
+		this.timeline=options.timeline;
+
 		this._updateData();
 		this._updateExtents();
 		this._buildChart();
+
+
 	}
 
 	_updateData() {
@@ -98,8 +103,11 @@ export default class Match {
 
 	_buildChart() {
 		let self=this;
+		let timeline=null;
 
-		let box=this.container.node().getBoundingClientRect();
+		let svg=this.container.append("svg")
+
+		let box=svg.node().getBoundingClientRect();
 		let WIDTH = box.width,
 			HEIGHT= box.height;
 		
@@ -107,7 +115,8 @@ export default class Match {
 		this.xscale=d3.scale.linear().domain(this.extents.seconds).range([0,WIDTH-(this.margins.left+this.margins.right)])
 		this.yscale=d3.scale.linear().domain([0,this.max_score || this.extents.score]).range([HEIGHT-(this.margins.top+this.margins.bottom),0])
 
-		let svg=this.container.append("svg")
+		
+					//.attr("height",HEIGHT)
 						
 
 		let area = d3.svg.line()
@@ -156,7 +165,7 @@ export default class Match {
 						}
 					}))
 				})
-		var evt=team.append("g")
+		/*var evt=team.append("g")
 			.attr("class","events")
 				.selectAll("g.event")
 					.data(function(d){
@@ -192,14 +201,14 @@ export default class Match {
 				.attr("width",6)
 				.attr("height",8)
 
-		/*evt
+		evt
 			.filter(function(d){
 				return d.type!=="yellow card" && d.type!=="red card"
 			})
 			.append("circle")
 				.attr("cx",0)
 				.attr("cy",0)
-				.attr("r",3)*/
+				.attr("r",1)*/
 
 
 		team.append("circle")
@@ -253,6 +262,16 @@ export default class Match {
 			      .attr("class", "x axis")
 			      .attr("transform", "translate("+0+"," + (this.yscale.range()[0]+1) + ")")
 			      .call(xAxis);
+
+		if(this.timeline) {
+			timeline=new Timeline(nested_data,{
+				xscale:this.xscale,
+				container:this.container,
+				margins:this.margins,
+				teams_info:this.teams_info,
+				country_field:this.options.country_field
+			});
+		}
 	}
 
 }

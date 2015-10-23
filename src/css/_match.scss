@@ -70,6 +70,12 @@
 		}
 	}
 	
+	&.with-timeline {
+		svg {
+			height:calc(100% - #{$timeline_height});
+		}
+	}
+
 	&.small {
 		
 		height: 100px;

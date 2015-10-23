@@ -76,10 +76,6 @@ export function init(el, context, config, mediator) {
             .enter()
             .append("div")
                 .attr("class","pool")
-        //pool.append("h4")
-          //      .text(function(d){
-            //        return "Pool "+d;
-              //  })
 
         pool.append("div")
                 .attr("class","matches")
@@ -133,7 +129,7 @@ export function init(el, context, config, mediator) {
                             }))
                             .enter()
                             .append("div")
-                                .attr("class","match")
+                                .attr("class","match with-timeline")
                                 .attr("rel",function(d){
                                     return d.teams[0].nid+" vs "+d.teams[1].nid;
                                 })
@@ -147,27 +143,28 @@ export function init(el, context, config, mediator) {
                                         container:this,
                                         teams:d.teams,
                                         max_score:65,
-                                        country_field:"name",
+                                        country_field:"short_name",
                                         small:false,
                                         margins:{
                                             top:20,
                                             bottom:20,
-                                            left:10,
-                                            right:90
-                                        }
+                                            left:40,
+                                            right:40
+                                        },
+                                        timeline:true
                                     })    
                                 })
-
+        
         var sf=d3.select(".semi-finals .contents")
                         .append("div")
                         .attr("class","matches")
                             .selectAll("div.match")
                             .data(matches.filter(function(d){
-                                return d.info._group === "QF" 
-                            }).slice(0,2))
+                                return d.id === "101535" || d.id==="101527" 
+                            }))
                             .enter()
                             .append("div")
-                                .attr("class","match")
+                                .attr("class","match with-timeline")
                                 .attr("rel",function(d){
                                     return d.teams[0].nid+" vs "+d.teams[1].nid;
                                 })
@@ -181,14 +178,15 @@ export function init(el, context, config, mediator) {
                                         container:this,
                                         teams:d.teams,
                                         max_score:65,
-                                        country_field:"name",
+                                        country_field:"short_name",
                                         small:false,
                                         margins:{
                                             top:20,
                                             bottom:20,
-                                            left:10,
-                                            right:90
-                                        }
+                                            left:40,
+                                            right:40
+                                        },
+                                        timeline:true
                                     })    
                                 })
         
@@ -197,11 +195,11 @@ export function init(el, context, config, mediator) {
                         .attr("class","matches")
                             .selectAll("div.match")
                             .data(matches.filter(function(d){
-                                return d.info._group === "QF" 
-                            }).slice(1,2))
+                                return d.id === "101504" 
+                            }))
                             .enter()
                             .append("div")
-                                .attr("class","match")
+                                .attr("class","match with-timeline")
                                 .attr("rel",function(d){
                                     return d.teams[0].nid+" vs "+d.teams[1].nid;
                                 })
@@ -220,9 +218,10 @@ export function init(el, context, config, mediator) {
                                         margins:{
                                             top:20,
                                             bottom:20,
-                                            left:10,
+                                            left:80,
                                             right:90
-                                        }
+                                        },
+                                        timeline:true
                                     })    
                                 })
         
