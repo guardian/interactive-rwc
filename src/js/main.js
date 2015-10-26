@@ -160,7 +160,7 @@ export function init(el, context, config, mediator) {
                         .attr("class","matches")
                             .selectAll("div.match")
                             .data(matches.filter(function(d){
-                                return d.id === "101535" || d.id==="101527" 
+                                return d.info._group === "SF" 
                             }))
                             .enter()
                             .append("div")
