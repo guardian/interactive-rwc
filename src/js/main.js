@@ -6,7 +6,7 @@ import QF_NZvsFR from '../assets/data/QF_NZvsFR.json!json'
 import QF_IEvsAR from '../assets/data/QF_IEvsAR.json!json'
 import QF_SAvsWA from '../assets/data/QF_SAvsWA.json!json'*/
 import matches_data from '../assets/data/matches.json!json';
-import Match from './charts/Match';
+import Match from './charts/IconMatch';
 import Road from './charts/Road';
 import { matches } from './charts/matches';
 import { match_ids } from './charts/matches';
@@ -76,7 +76,7 @@ export function init(el, context, config, mediator) {
             .enter()
             .append("div")
                 .attr("class","pool")
-
+        /*
         pool.append("div")
                 .attr("class","matches")
                 .selectAll("div.match")
@@ -189,13 +189,13 @@ export function init(el, context, config, mediator) {
                                         timeline:true
                                     })    
                                 })
-        
+        */
         var finals=d3.select(".final .contents")
                         .append("div")
                         .attr("class","matches")
                             .selectAll("div.match")
                             .data(matches.filter(function(d){
-                                return d.id === "101504" 
+                                return d.id === "101544" 
                             }))
                             .enter()
                             .append("div")

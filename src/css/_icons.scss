@@ -1,0 +1,33 @@
+//ICONS
+.penalty-icon,
+.conversion-icon,
+.missed-drop-goal-icon {
+	fill:none;
+	stroke:#aaa;
+	stroke-width:1.5;
+	stroke-linecap:square;
+	
+}
+.missed-drop-goal-icon {
+	stroke:#ff0000;
+}
+.yellow-card-icon {
+	fill:#ffd041;
+	stroke:none;
+	shape-rendering: crispEdges;
+}
+.red-card-icon {
+	fill:#ff1c58;
+	stroke:none;
+	shape-rendering: crispEdges;
+}
+.try-icon {
+		fill:#7A4420;
+		stroke:none;
+}
+.sub-icon {
+	fill:none;
+	stroke:#333;
+	stroke-width:1;
+	
+}

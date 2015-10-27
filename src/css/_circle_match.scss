@@ -1,0 +1,66 @@
+.match.circle {
+	
+	width:500px !important;
+	height:500px !important;
+
+	&.with-timeline svg {
+		height:100%;
+	}
+
+	svg {
+		.team path {
+			fill:none;
+			stroke-width:2;
+			shape-rendering: optimizeSpeed;
+		}
+		text.team-name {
+			text-anchor:start;
+		}
+
+		.events {
+
+			.evt {
+
+				line {
+					fill:none;
+					stroke:#ddd;
+					stroke-width:1;
+					shape-rendering: optimizeSpeed;
+					//stroke-dasharray: 1,5;
+					stroke-linecap:round;
+				}
+
+			}
+
+		}
+
+		.axes {
+			circle {
+				fill:none;
+				stroke-width:1;
+				stroke:#ddd;
+			}
+			line {
+				fill:none;
+				stroke:#ddd;
+				stroke-width:1;
+				shape-rendering: optimizeSpeed;
+			}
+			text {
+				fill:#ddd;
+				text-anchor:middle;
+			}
+		}
+	}
+	&.small {
+		
+	
+		.teams {
+			.team {
+				path {
+					stroke-width:2;
+				}
+			}
+		}
+	}
+}

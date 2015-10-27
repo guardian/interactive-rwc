@@ -33,5 +33,17 @@ $colors-list: $SC, $AU, $NZ, $FR, $SA, $AR, $IE, $WA, $JP, $US, $NA, $CA, $TO, $
         text.team-name {
         	fill: $current-color;	
         }
+        g.status {
+            line {
+                stroke: $current-color;
+            }  
+        }
     }
+    g.status {
+            circle.#{nth($countries-list, $i)} {
+                fill: $current-color;
+            }
+    }
+    
+    
 }
