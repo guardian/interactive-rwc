@@ -10,9 +10,9 @@
 	svg {
 		.team path {
 			fill:none;
-			stroke-width:2;
+			stroke-width:3;
 			shape-rendering: optimizeSpeed;
-		}
+			stroke-linecap: round;		}
 		text.team-name {
 			text-anchor:start;
 		}
@@ -20,6 +20,10 @@
 		.events {
 
 			.evt {
+
+				&.hidden {
+					opacity:0.2;
+				}
 
 				line {
 					fill:none;
@@ -33,7 +37,16 @@
 			}
 
 		}
-
+		.lead-circle {
+			g.arc {
+				path {
+					fill:none;
+					stroke-width:10;
+					shape-rendering: optimizeSpeed;
+					stroke-linecap:butt;
+				}
+			}
+		}
 		.axes {
 			circle {
 				fill:none;

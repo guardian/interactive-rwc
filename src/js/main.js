@@ -6,7 +6,7 @@ import QF_NZvsFR from '../assets/data/QF_NZvsFR.json!json'
 import QF_IEvsAR from '../assets/data/QF_IEvsAR.json!json'
 import QF_SAvsWA from '../assets/data/QF_SAvsWA.json!json'*/
 import matches_data from '../assets/data/matches.json!json';
-import Match from './charts/IconMatch';
+import Match from './charts/CircleMatch';
 import Road from './charts/Road';
 import { matches } from './charts/matches';
 import { match_ids } from './charts/matches';

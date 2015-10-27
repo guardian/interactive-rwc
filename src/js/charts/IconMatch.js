@@ -30,6 +30,16 @@ export default class IconMatch extends Match {
 		let self=this;
 		let timeline=null;
 
+		this.options.indexed=true;
+		this.options.relative_height=true;
+
+		this.margins={
+			top:30,
+			left:30,
+			bottom:30,
+			right:58
+		}
+
 		let svg=this.container
 						.classed("icon",true)
 						.append("svg")
@@ -42,6 +52,13 @@ export default class IconMatch extends Match {
 		this.xscale=d3.scale.linear().domain(this.extents.seconds).range([0,WIDTH-(this.margins.left+this.margins.right)])
 		this.yscale=d3.scale.linear().domain([0,this.max_score || this.extents.score]).range([HEIGHT-(this.margins.top+this.margins.bottom),0])
 
+		if(this.options.indexed){
+			this.xscale.domain(this.extents.score_indexes)	
+		}
+		if(this.options.relative_height) {
+			this.yscale.domain([0,this.extents.score[1]])
+		}
+		
 		
 					//.attr("height",HEIGHT)
 						
@@ -129,31 +146,42 @@ export default class IconMatch extends Match {
 				.attr("x",function(d){
 					return self.xscale(self.xscale.domain()[1])
 				})
-				.attr("dx",-5)
+				.attr("dx",12)
 				.attr("y",function(d){
 					return self.yscale(d.values.score);
 				})
 				.attr("dy",function(d){
 					//console.log(d.key,d,self.extents.score[1])
 					if(d.values.score<self.extents.score[1]) {
-						return 14;
+						return 17;
 					}
-					return -5;
+					return -8;
 				})
 				.text(function(d){
-					return self.teams_info[d.key][self.options.country_field||name] + " " +d.values.score;
+					return self.teams_info[d.key]["short_name"] + " " +d.values.score;
 				})
 
 		var status=team.selectAll("g.status")
 				.data(function(d){
 					console.log("!!!!!!",d)
-					return d.values.events;
+					return d.values.events.filter(function(d){
+						return 	d.type==="try"
+								||
+								d.type=="penalty try"
+								||
+								d.type=="conversion"
+								||
+								d.type=="penalty"
+								||
+								d.type=="drop goal";
+					});
 				})
 				.enter()
 				.append("g")
 					.attr("class","status")
-					.attr("transform",function(d){
-						var x=self.xscale(d.seconds),
+					.attr("transform",function(d,i){
+						//console.log("INDEX",d.index,"(",i,")");
+						var x=self.xscale(self.options.indexed?d.score_index:d.seconds),
 							y=0;
 						return "translate("+x+","+y+")"
 					})
@@ -174,7 +202,21 @@ export default class IconMatch extends Match {
 				.attr("cy",function(d){
 					return self.yscale(d.score)
 				})
-				.attr("r",4)
+				.attr("r",12)
+		status.append("use")
+				.attr("class",function(d){
+					return d.type.replace(/\s/gi,"-")+"-icon"
+				})
+				.attr("xlink:href",function(d){
+					return "#"+d.type.replace(/\s/gi,"-");
+				})
+				.attr("x",function(d){
+					return 0;
+				})
+				.attr("y",function(d){
+					return self.yscale(d.score);
+				})
+
 		status.append("circle")
 				.attr("class",function(d){
 					return "other-team "+self.teams_info[self.other_team[d.team_id]].nid;
@@ -185,14 +227,14 @@ export default class IconMatch extends Match {
 				.attr("cy",function(d){
 					return self.yscale(d.other_score)
 				})
-				.attr("r",2)
+				.attr("r",3)
 		
 
 		let axes=svg.append("g")
 					.attr("class","axes")
 					.attr("transform","translate("+this.margins.left+","+this.margins.top+")")
 
-		let xAxis = d3.svg.axis()
+		/*let xAxis = d3.svg.axis()
 				    .scale(this.xscale)
 				    .orient("bottom")
 					.tickValues(function(){
@@ -210,7 +252,7 @@ export default class IconMatch extends Match {
 		let xaxis=axes.append("g")
 			      .attr("class", "x axis")
 			      .attr("transform", "translate("+0+"," + (this.yscale.range()[0]+1) + ")")
-			      .call(xAxis);
+			      .call(xAxis);*/
 
 		/*if(this.timeline) {
 			timeline=new Timeline(nested_data,{

@@ -27,6 +27,7 @@ export default class Match {
 		this.timeline=options.timeline;
 
 		this._updateData();
+		
 		this._updateExtents();
 		this._buildChart();
 
@@ -40,6 +41,10 @@ export default class Match {
 			self.teams_info[t.id]=t;
 		})
 
+		this.other_team={};
+		this.other_team[this.teams[0].id]=this.teams[1].id;
+		this.other_team[this.teams[1].id]=this.teams[0].id;
+
 		let current_scores={};
 		current_scores[this.teams[0].id]=0;
 		current_scores[this.teams[1].id]=0;
@@ -47,7 +52,7 @@ export default class Match {
 		this.events=this.events.map(function(d){
 			return d["$"];
 		});
-		this.events.forEach(function(d){
+		this.events.forEach(function(d,i){
 			d.real_minute = +d.minute;
 			if(isNaN(d.real_minute)){
 				//console.log("+++++",d.minute)
@@ -55,11 +60,13 @@ export default class Match {
 			}
 			d.real_second = +d.second;
 			d.seconds = d.real_minute*60 + d.real_second;
+			
 		});
 		this.events=this.events.sort(function(a,b){
 			return a.seconds - b.seconds;
 		})
-		this.events.forEach(function(d){
+		this.events.forEach(function(d,i){
+			d.index=i;
 			d.type = d.type.toLowerCase();
 			//console.log(d.type)
 			if(d.type=="try") {
@@ -81,10 +88,66 @@ export default class Match {
 			d.score=current_scores[d.team_id];
 			
 		})
-
+		this.events
+			.filter(function(d){
+				return 	d.type==="try"
+						||
+						d.type=="penalty try"
+						||
+						d.type=="conversion"
+						||
+						d.type=="penalty"
+						||
+						d.type=="drop goal";
+			})
+			.forEach((d,i) => {
+				d.score_index=i;
+			})
 		this.teams_info[this.teams[0].id].winner=current_scores[this.teams[0].id]>current_scores[this.teams[1].id];
 		this.teams_info[this.teams[1].id].winner=current_scores[this.teams[0].id]<current_scores[this.teams[1].id];
 
+		let current_score={};
+		this.scores=this.events.filter(function(d){
+				return 	d.type==="try"
+						||
+						d.type=="penalty try"
+						||
+						d.type=="conversion"
+						||
+						d.type=="penalty"
+						||
+						d.type=="drop goal";
+		});
+		this.scores.forEach(function(d){
+			
+			if(!current_score[d.team_id]) {
+				current_score[d.team_id]=0;
+			}
+			if(!current_score[self.other_team[d.team_id]]) {
+				current_score[self.other_team[d.team_id]]=0;
+			}
+			current_score[d.team_id]=d.score;
+			d.other_score=current_score[self.other_team[d.team_id]]
+		})
+		let prev_seconds=0;
+		this.scores.forEach((d,i) => {
+			d.leader=null;
+			
+			if(i>0) {
+
+				let prev=self.scores[i-1];
+				console.log(prev,d)
+
+				if(prev.score!==prev.other_score) {
+					d.leader=(prev.score>prev.other_score)?prev.team_id:self.other_team[prev.team_id];
+				}
+					
+				//console.log(d.leader,prev.team_id,":",prev.score,self.other_team[prev.team_id],prev.other_score)
+			}
+						
+			d.prev_seconds=prev_seconds;
+			prev_seconds=d.seconds;
+		})
 		//console.log(this.events);
 
 	}
@@ -92,13 +155,16 @@ export default class Match {
 	_updateExtents() {
 
 		this.extents={
+			indexes:d3.extent(this.events,function(d){return d.index;}),
+			score_indexes:d3.extent(this.events,function(d){return d.score_index;}),
+
 			score:[0,Math.max(this.info.home_score,this.info.away_score)],
 			//seconds:[0,(+this.info.period_minute*60 + +this.info.period_second)]
 			seconds:d3.extent(this.events,function(d){return d.seconds}),
 			minute:this.events.sort(function(a,b){return a.seconds - b.seconds})[this.events.length-1]
 		}
 
-		//console.log(this.extents)
+		console.log("EXTENTS",this.extents)
 	}
 
 	_buildChart() {

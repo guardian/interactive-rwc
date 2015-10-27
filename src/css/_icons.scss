@@ -1,28 +1,31 @@
 //ICONS
 .penalty-icon,
 .conversion-icon,
+.drop-goal,
 .missed-drop-goal-icon {
 	fill:none;
-	stroke:#aaa;
-	stroke-width:1.5;
-	stroke-linecap:square;
+	stroke:#fff;//#aaa;
+	stroke-width:1;
+	//stroke-linecap:square;
 	
 }
 .missed-drop-goal-icon {
-	stroke:#ff0000;
+	stroke:#000;
 }
 .yellow-card-icon {
 	fill:#ffd041;
-	stroke:none;
+	stroke:#333;
+	stroke-width:1;
 	shape-rendering: crispEdges;
 }
 .red-card-icon {
 	fill:#ff1c58;
-	stroke:none;
+	stroke:#333;
+	stroke-width:1;
 	shape-rendering: crispEdges;
 }
 .try-icon {
-		fill:#7A4420;
+		fill:#fff;
 		stroke:none;
 }
 .sub-icon {

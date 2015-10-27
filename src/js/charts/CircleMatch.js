@@ -19,6 +19,7 @@ export default class CircleMatch extends Match {
 		let svg=this.container
 					.classed("circle",true)
 					.append("svg")
+					
 
 		let defs = svg.append("defs");
 		this._createIcons(defs) 
@@ -42,6 +43,9 @@ export default class CircleMatch extends Match {
 		}
 
 		let RADIUS=WIDTH/2  - d3.max([this.margins.top,this.margins.bottom]) -  d3.max([this.padding.top,this.padding.bottom]);
+		
+		this.width2=WIDTH/2;
+		this.height2=HEIGHT/2;
 
 		let center = [box.width/2,box.height/2];
 		
@@ -53,7 +57,7 @@ export default class CircleMatch extends Match {
 		
 
 		this.radius_scale=d3.scale.linear().domain([0,this.max_score]).range([0,RADIUS]);
-		this.radius_scale.domain([0,this.extents.score[1]])
+		//this.radius_scale.domain([0,this.extents.score[1]])
 
 		this.alpha_scale=d3.scale.linear().domain(this.extents.seconds).range([0,360])				
 		
@@ -82,6 +86,14 @@ export default class CircleMatch extends Match {
 					.attr("class","axes")
 					.attr("transform","translate("+(WIDTH/2)+","+(HEIGHT/2)+")");
 
+		let evts=svg.append("g")
+					.attr("class","events")
+					.attr("transform","translate("+center[0]+","+center[1]+")");
+
+		let lead_circle=svg.append("g")
+							.attr("class","lead-circle")
+							.attr("transform","translate("+center[0]+","+center[1]+")");
+
 		let team=svg.append("g")
 						.attr("class","teams")
 						.attr("transform","translate("+center[0]+","+center[1]+")")
@@ -101,46 +113,6 @@ export default class CircleMatch extends Match {
 								return d.key;
 							})
 
-		/*team.selectAll("text")
-				.data(function(d){
-					return d.values.events.filter(function(d){
-							return 	d.type==="first half start"
-									||
-									d.type==="second half end"
-									||
-									d.type==="try"
-									||
-									d.type=="penalty try"
-									||
-									d.type=="conversion"
-									||
-									d.type=="penalty"
-									||
-									d.type=="drop goal";
-						});
-				})
-				.enter()
-				.append("text")
-					.attr("class","team-name")
-					.attr("x",(d,i) => {
-						var radius=self.radius_scale(d.score),
-							alpha=self.alpha_scale(d.seconds);
-
-						console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
-
-						return radius * Math.cos(Math.PI/2-alpha)
-
-						return 0;
-					})
-					.attr("y",(d,i) => {
-						var radius=self.radius_scale(d.score),
-							alpha=self.alpha_scale(d.seconds);
-						//console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
-						return -(radius*Math.sin(Math.PI/2-alpha));
-					})
-					.text(function(d,i){
-						return i
-					})*/
 		team.append("path")
 				.datum(function(d){
 					var values=d.values.events.filter(function(d){
@@ -167,6 +139,9 @@ export default class CircleMatch extends Match {
 								a1=self._toRad(self.alpha_scale(d.seconds)),
 								r2=self.radius_scale(d1.score),
 								a2=self._toRad(self.alpha_scale(d1.seconds));
+
+							d.seconds2=d1.seconds;
+							d.score2=d1.score;
 
 							d.r1 = r1;
 							d.r2 = r2;
@@ -207,19 +182,6 @@ export default class CircleMatch extends Match {
 					})
 
 
-		/*
-		team.append("path")
-				.attr("d",function(d){
-					return circleLine(d.values.events.map(function(v){
-						//console.log(v.seconds,v.score)
-						return {
-							x:v.seconds,
-							y:v.score
-						}
-					}))
-				})*/
-
-
 		team.append("circle")
 				.attr("cx",function(d){
 					let last_event=d.values.events[d.values.events.length-1],
@@ -229,13 +191,7 @@ export default class CircleMatch extends Match {
 						d.y1 = -(r*Math.sin(Math.PI/2-a));
 					return d.x1;
 				})
-				.attr("cy",function(d){
-					/*let last_event=d.values.events[d.values.events.length-1],
-						r=self.radius_scale(last_event.score),
-						a=self.alpha_scale(last_event.seconds),
-						x1 = r * Math.cos(Math.PI/2-a),
-						y1 = -(r*Math.sin(Math.PI/2-a));*/
-						
+				.attr("cy",function(d){	
 					return d.y1;
 				})
 				.attr("r",this.options.small?1.5:3)
@@ -297,51 +253,8 @@ export default class CircleMatch extends Match {
 				.text(function(d){
 					return d;
 				})
-
-		/*axes
-				.selectAll("g.axis")
-				.data(([20,40,60,80]).map(function(d){
-					return self._getCoordsAt(self.radius_scale.domain()[1],d*60)
-				}))
-				.enter()
-				.append("g")
-					.attr("class","axis")
-					.append("line")
-						.attr("x1",0)
-						.attr("y1",0)
-						.attr("x2",function(d){
-							return d[0]
-						})
-						.attr("y2",function(d){
-							return d[1]
-						})*/
-
-		/*
-		let xAxis = d3.svg.axis()
-				    .scale(this.xscale)
-				    .orient("bottom")
-					.tickValues(function(){
-
-						return d3.range(8).map(function(d){
-							return d*10*60;
-						}).concat([self.extents.seconds[1]])
-
-					}())
-				    .tickFormat(function(d){
-				    	return !(d%60)?d/60:self.extents.minute.minute
-				    })
-		*/		    
-
-		/*let xaxis=axes.append("g")
-			      .attr("class", "x axis")
-			      .attr("transform", "translate("+0+"," + (this.yscale.range()[0]+1) + ")")
-			      .call(xAxis);*/
 		
-
-		var evts=svg.append("g")
-					.attr("class","events")
-					.attr("transform","translate("+center[0]+","+center[1]+")");
-		var evt=evts.selectAll("g.evt")
+		let evt=evts.selectAll("g.evt")
 					.data(nested_data[0].values.events.concat(nested_data[1].values.events).filter(function(d){
 						return d.seconds>0 && d.type!=="sub off" && d.type!=="sub on" && d.type!=="second half start" && d.type!=="first half end" && d.type!=="second half end";
 					}))
@@ -350,15 +263,15 @@ export default class CircleMatch extends Match {
 					}))*/
 					.enter()
 					.append("g")
-						.attr("class",function(d){
+						.attr("class",(d) => {
 							return self.teams_info[d.team_id].nid+" evt "+d.type.replace(/\s/gi,"-");
 						})
 
 		evt.append("line")
-				.attr("rel",function(d){
+				.attr("rel",(d) => {
 					return d.minute+":"+d.second;
 				})
-				.attr("x1",function(d){
+				.attr("x1",(d) => {
 					if(!d.x0) {
 						let r=self.radius_scale(d.score)+3,
 							a=self._toRad(self.alpha_scale(d.seconds));
@@ -368,10 +281,10 @@ export default class CircleMatch extends Match {
 					}
 					return d.x0;
 				})
-				.attr("y1",function(d){
+				.attr("y1",(d) => {
 					return d.y0;
 				})
-				.attr("x2",function(d){
+				.attr("x2",(d) => {
 					let r=RADIUS+self.padding.top,//self.radius_scale(d.score),
 						a=self._toRad(self.alpha_scale(d.seconds));
 						d.__x1 = r * Math.cos(Math.PI/2-a),
@@ -381,23 +294,159 @@ export default class CircleMatch extends Match {
 				.attr("y2",function(d){
 					return d.__y1;
 				})
-		evt.append("use")
-				.attr("class",function(d){
+		let icon=evt.append("g")
+				.attr("class","icon")
+				.attr("transform",(d) => {
+					let r=RADIUS+self.padding.top+5,//self.radius_scale(d.score),
+						a=self._toRad(self.alpha_scale(d.seconds));
+						d.___x1 = r * Math.cos(Math.PI/2-a),
+						d.___y1 = -(r*Math.sin(Math.PI/2-a));
+					return "translate("+d.___x1+","+d.___y1+")"
+				})
+		icon.append("circle")
+				.attr("cx",0)
+				.attr("cy",0)
+				.attr("r",9)
+		icon.append("use")
+				.attr("class",(d) => {
 					return d.type.replace(/\s/gi,"-")+"-icon"
 				})
 				.attr("xlink:href",function(d){
 					return "#"+d.type.replace(/\s/gi,"-");
 				})
-				.attr("x",function(d){
-					let r=RADIUS+self.padding.top+5,//self.radius_scale(d.score),
-						a=self._toRad(self.alpha_scale(d.seconds));
-						d.___x1 = r * Math.cos(Math.PI/2-a),
-						d.___y1 = -(r*Math.sin(Math.PI/2-a));
-					return d.___x1;
+				.attr("x",0)
+				.attr("y",0)
+				.attr("transform","translate(0,4)");
+
+
+
+		let lead_arc=lead_circle.selectAll("g.arc")
+									.data(this.scores)
+									.enter()
+									.append("g")
+										.attr("class",function(d){
+											//console.log(d)
+											return "arc "+self.teams_info[d.team_id].nid;
+										})
+		lead_arc.append("path")
+					.attr("d",function(d){
+						console.log(d)
+						let radius=RADIUS+10,
+							a1=self._toRad(self.alpha_scale(d.prev_seconds)),
+							a2=self._toRad(self.alpha_scale(d.seconds));
+
+						let x1 = radius * Math.cos(Math.PI/2-a1),
+							y1 = -(radius*Math.sin(Math.PI/2-a1)),
+							x2 = radius * Math.cos(Math.PI/2-a2),
+							y2 = -(radius*Math.sin(Math.PI/2-a2));
+
+						let larg_arc = (self.alpha_scale(d.seconds) - self.alpha_scale(d.prev_seconds)> 180)?1:0;
+
+						let path="M"+x1+","+y1;
+						//path+="L"+x2+","+y2;
+						path+="A"+radius+" "+radius+" 0 "+larg_arc+" 1 "+x2+" "+y2;
+
+							
+						return path;
+
+					})
+
+		let filterMatchAtSeconds = (seconds) => {
+
+			team.select("path")
+				.datum((d) => {
+						var values=d.values.events.filter((d) => {
+							return 	d.seconds <= seconds
+									&&
+									(d.type==="first half start"
+									||
+									d.type==="second half end"
+									||
+									d.type==="try"
+									||
+									d.type=="penalty try"
+									||
+									d.type=="conversion"
+									||
+									d.type=="penalty"
+									||
+									d.type=="drop goal");
+						});
+						return values;
+					})
+					.attr("d",(p) => {
+						
+						//console.log(p)
+
+						var path="";
+						//console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
+
+						p.filter((d) => {return (typeof d.x2 !== 'undefined');}).forEach((d) => {
+							
+							path+="M"+d.x1+","+d.y1;
+							//path+="L"+d.x2+","+d.y2;
+							
+							path+="A"+d.r1+" "+d.r1+" 0 "+d.larg_arc+" 1 "+d.x2+" "+d.y2;
+
+							path+="L"+d.x3+","+d.y3
+						})
+
+						return path;
+					})
+
+
+			evt.classed("hidden",(d) => {
+				return d.seconds > seconds;
+			})
+
+			team.select("circle")
+				.attr("cx",function(d){
+					var values=d.values.events.filter((d) => {
+							return 	d.seconds <= seconds
+									&&
+									(d.type==="first half start"
+									||
+									d.type==="second half end"
+									||
+									d.type==="try"
+									||
+									d.type=="penalty try"
+									||
+									d.type=="conversion"
+									||
+									d.type=="penalty"
+									||
+									d.type=="drop goal");
+						});
+
+					let last_event=values[values.length-1],
+						r=self.radius_scale(last_event.score2),
+						a=self._toRad(self.alpha_scale(last_event.seconds2));
+						d.__tx1 = r * Math.cos(Math.PI/2-a),
+						d.__ty1 = -(r*Math.sin(Math.PI/2-a));
+					return d.__tx1;
 				})
-				.attr("y",function(d){
-					return d.___y1;
+				.attr("cy",function(d){	
+					return d.__ty1;
 				})
+				
+
+		}
+
+		svg.on("mousemove",function(){
+						return;
+						let coords=d3.mouse(this),
+							alpha=self._getAlphaFromCoords(coords,[self.width2,self.height2]);
+
+						let seconds=self.alpha_scale.invert(alpha<0?360+alpha:alpha);
+
+						console.log(alpha,seconds)
+
+						filterMatchAtSeconds(seconds)
+
+					})
+
+		
 
 	}
 	_getCoordsAt(score,seconds) {
@@ -411,6 +460,16 @@ export default class CircleMatch extends Match {
 		];
 
 	}
+	_getAlphaFromCoords(coords,center) {
+		
+		let circle_coords=[coords[0] - center[0],coords[1]-center[1]]
+		
+		let alpha = Math.atan2(circle_coords[1],circle_coords[0])+Math.PI/2;
+
+		console.log(coords,circle_coords,alpha,this._toDeg(alpha))
+
+		return this._toDeg(alpha);
+	}
 
 	_createIcons(defs) {
 
@@ -418,13 +477,13 @@ export default class CircleMatch extends Match {
 		let penalty=defs.append("g")
 						.attr("id","penalty");
 		penalty.append("line")
-					.attr("x1",-2)
-					.attr("y1",-3)
+					.attr("x1",-3)
+					.attr("y1",0)
 					.attr("x2",-2)
 					.attr("y2",-8)
 		penalty.append("line")
-					.attr("x1",2)
-					.attr("y1",-3)
+					.attr("x1",3)
+					.attr("y1",0)
 					.attr("x2",2)
 					.attr("y2",-8)
 		penalty.append("line")
@@ -432,23 +491,18 @@ export default class CircleMatch extends Match {
 					.attr("y1",-3)
 					.attr("x2",2)
 					.attr("y2",-3)
-		penalty.append("line")
-					.attr("x1",0)
-					.attr("y1",-3)
-					.attr("x2",0)
-					.attr("y2",0)
 
 		//conversopm
 		let conversion=defs.append("g")
 						.attr("id","conversion");
 		conversion.append("line")
-					.attr("x1",-2)
-					.attr("y1",-3)
+					.attr("x1",-3)
+					.attr("y1",0)
 					.attr("x2",-2)
 					.attr("y2",-8)
 		conversion.append("line")
-					.attr("x1",2)
-					.attr("y1",-3)
+					.attr("x1",3)
+					.attr("y1",0)
 					.attr("x2",2)
 					.attr("y2",-8)
 		conversion.append("line")
@@ -456,22 +510,37 @@ export default class CircleMatch extends Match {
 					.attr("y1",-3)
 					.attr("x2",2)
 					.attr("y2",-3)
-		conversion.append("line")
-					.attr("x1",0)
+
+		//missed-drop-goal
+		let drop_goal=defs.append("g")
+						.attr("id","drop-goal");
+		drop_goal.append("line")
+					.attr("x1",-3)
+					.attr("y1",0)
+					.attr("x2",-2)
+					.attr("y2",-8)
+		drop_goal.append("line")
+					.attr("x1",3)
+					.attr("y1",0)
+					.attr("x2",2)
+					.attr("y2",-8)
+		drop_goal.append("line")
+					.attr("x1",-2)
 					.attr("y1",-3)
-					.attr("x2",0)
-					.attr("y2",0)
+					.attr("x2",2)
+					.attr("y2",-3)
+
 		//missed-drop-goal
 		let missed_drop_goal=defs.append("g")
 						.attr("id","missed-drop-goal");
 		missed_drop_goal.append("line")
-					.attr("x1",-2)
-					.attr("y1",-3)
+					.attr("x1",-3)
+					.attr("y1",0)
 					.attr("x2",-2)
 					.attr("y2",-8)
 		missed_drop_goal.append("line")
-					.attr("x1",2)
-					.attr("y1",-3)
+					.attr("x1",3)
+					.attr("y1",0)
 					.attr("x2",2)
 					.attr("y2",-8)
 		missed_drop_goal.append("line")
@@ -479,11 +548,6 @@ export default class CircleMatch extends Match {
 					.attr("y1",-3)
 					.attr("x2",2)
 					.attr("y2",-3)
-		missed_drop_goal.append("line")
-					.attr("x1",0)
-					.attr("y1",-3)
-					.attr("x2",0)
-					.attr("y2",0)
 
 		let redcard=defs.append("g")
 						.attr("id","red-card");
@@ -505,7 +569,7 @@ export default class CircleMatch extends Match {
 		let _try_g=_try.append("g")
 					.attr("transform","rotate(-20)")
 		_try_g.append("ellipse")
-					.attr("cx",0)
+					.attr("cx",1)
 					.attr("cy",-4)
 					.attr("rx",3)
 					.attr("ry",5)
@@ -534,6 +598,8 @@ export default class CircleMatch extends Match {
 					.attr("y1",2+l)
 					.attr("x2",l)
 					.attr("y2",2)
+
+		
 	}
 
 }

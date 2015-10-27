@@ -39,6 +39,12 @@ $colors-list: $SC, $AU, $NZ, $FR, $SA, $AR, $IE, $WA, $JP, $US, $NA, $CA, $TO, $
             }  
         }
     }
+
+    g.arc.#{nth($countries-list, $i)} {
+        path {
+            stroke: $current-color; 
+        }
+    }
     g.status {
             circle.#{nth($countries-list, $i)} {
                 fill: $current-color;
