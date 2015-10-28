@@ -45,9 +45,7 @@ export default class Match {
 		this.other_team[this.teams[0].id]=this.teams[1].id;
 		this.other_team[this.teams[1].id]=this.teams[0].id;
 
-		let current_scores={};
-		current_scores[this.teams[0].id]=0;
-		current_scores[this.teams[1].id]=0;
+		
 
 		this.events=this.events.map(function(d){
 			return d["$"];
@@ -65,8 +63,25 @@ export default class Match {
 		this.events=this.events.sort(function(a,b){
 			return a.seconds - b.seconds;
 		})
+
 		this.events.forEach(function(d,i){
 			d.index=i;
+		})
+
+		let current_scores={};
+		current_scores[this.teams[0].id]=0;
+		current_scores[this.teams[1].id]=0;
+
+		let current_seconds={}
+		current_seconds[this.teams[0].id]=0;
+		current_seconds[this.teams[1].id]=0;
+
+		
+
+		this.moments=[];
+
+		this.events.forEach(function(d,i){
+			
 			d.type = d.type.toLowerCase();
 			//console.log(d.type)
 			if(d.type=="try") {
@@ -86,69 +101,74 @@ export default class Match {
 			}
 			
 			d.score=current_scores[d.team_id];
+			d.score_index=i;
+
+			let moment={
+				team_id:null,
+				score:d3.max([current_scores[self.teams[0].id],current_scores[self.teams[1].id]]),
+				seconds:d.seconds
+			}
+			if(current_scores[self.teams[0].id]>current_scores[self.teams[1].id]) {
+				moment.team_id=self.teams[0].id
+			}
+			if(current_scores[self.teams[0].id]<current_scores[self.teams[1].id]) {
+				moment.team_id=self.teams[1].id
+			}
+			self.moments.push(moment)
+
+			/*
+			let arc={
+				team_id:null,
+				score:d3.max([current_scores[self.teams[0].id],current_scores[self.teams[1].id]]),
+				seconds:[self.arcs[i].seconds[1],d.seconds]
+			}
+
+			if(current_scores[self.teams[0].id]>current_scores[self.teams[1].id]) {
+				arc.team_id=self.teams[0].id
+			}
+			if(current_scores[self.teams[0].id]<current_scores[self.teams[1].id]) {
+				arc.team_id=self.teams[1].id
+			}
+			self.arcs.push(arc)
+			*/
 			
 		})
-		this.events
-			.filter(function(d){
-				return 	d.type==="try"
-						||
-						d.type=="penalty try"
-						||
-						d.type=="conversion"
-						||
-						d.type=="penalty"
-						||
-						d.type=="drop goal";
-			})
-			.forEach((d,i) => {
-				d.score_index=i;
-			})
+
+		this.moments=this.moments.filter(function(d){
+			return d.score>0;
+		})
+
+		//console.log("MOMENTS",this.moments)
+		
+		this.arcs=[];
+
+		while(this.moments.length>1) {
+			let moment=this.moments.pop();
+			if(moment.seconds!==this.moments[this.moments.length-1].seconds) {
+				let arc={
+					team_id:this.moments[this.moments.length-1].team_id,
+					seconds:[this.moments[this.moments.length-1].seconds,moment.seconds]
+				}
+				this.arcs.push(arc);	
+			}
+			
+		}
+
+		this.arcs.push({
+			team_id:null,
+			seconds:[0,this.moments[this.moments.length-1].seconds]
+		})
+
+		//console.log("ARCS",this.arcs)
+
 		this.teams_info[this.teams[0].id].winner=current_scores[this.teams[0].id]>current_scores[this.teams[1].id];
 		this.teams_info[this.teams[1].id].winner=current_scores[this.teams[0].id]<current_scores[this.teams[1].id];
 
-		let current_score={};
-		this.scores=this.events.filter(function(d){
-				return 	d.type==="try"
-						||
-						d.type=="penalty try"
-						||
-						d.type=="conversion"
-						||
-						d.type=="penalty"
-						||
-						d.type=="drop goal";
-		});
-		this.scores.forEach(function(d){
-			
-			if(!current_score[d.team_id]) {
-				current_score[d.team_id]=0;
-			}
-			if(!current_score[self.other_team[d.team_id]]) {
-				current_score[self.other_team[d.team_id]]=0;
-			}
-			current_score[d.team_id]=d.score;
-			d.other_score=current_score[self.other_team[d.team_id]]
-		})
-		let prev_seconds=0;
-		this.scores.forEach((d,i) => {
-			d.leader=null;
-			
-			if(i>0) {
+		
+		
+		
 
-				let prev=self.scores[i-1];
-				console.log(prev,d)
-
-				if(prev.score!==prev.other_score) {
-					d.leader=(prev.score>prev.other_score)?prev.team_id:self.other_team[prev.team_id];
-				}
-					
-				//console.log(d.leader,prev.team_id,":",prev.score,self.other_team[prev.team_id],prev.other_score)
-			}
-						
-			d.prev_seconds=prev_seconds;
-			prev_seconds=d.seconds;
-		})
-		//console.log(this.events);
+		
 
 	}
 

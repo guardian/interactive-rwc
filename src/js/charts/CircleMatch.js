@@ -57,7 +57,7 @@ export default class CircleMatch extends Match {
 		
 
 		this.radius_scale=d3.scale.linear().domain([0,this.max_score]).range([0,RADIUS]);
-		//this.radius_scale.domain([0,this.extents.score[1]])
+		this.radius_scale.domain([0,this.extents.score[1]])
 
 		this.alpha_scale=d3.scale.linear().domain(this.extents.seconds).range([0,360])				
 		
@@ -207,12 +207,13 @@ export default class CircleMatch extends Match {
 				})
 				.attr("dy",function(d){
 					//console.log(d.key,d,self.extents.score[1])
-					var delta=RADIUS - Math.abs(d.y1);
+					/*var delta=RADIUS - Math.abs(d.y1);
 					console.log(d,d.y1,RADIUS,delta)
 					if(delta>0 && delta<9) {
 						return 10;
 					}
-					return "0.25em";
+					return "0.25em";*/
+					console.log("DDDDD",d)
 					if(d.values.score<self.extents.score[1]) {
 						return 14;
 					}
@@ -267,11 +268,16 @@ export default class CircleMatch extends Match {
 							return self.teams_info[d.team_id].nid+" evt "+d.type.replace(/\s/gi,"-");
 						})
 
-		evt.append("line")
+		evt
+			.filter((d) => {
+				return d.type !== "red card" && d.type !== "yellow card";
+			})
+			.append("line")
 				.attr("rel",(d) => {
 					return d.minute+":"+d.second;
 				})
 				.attr("x1",(d) => {
+
 					if(!d.x0) {
 						let r=self.radius_scale(d.score)+3,
 							a=self._toRad(self.alpha_scale(d.seconds));
@@ -321,26 +327,26 @@ export default class CircleMatch extends Match {
 
 
 		let lead_arc=lead_circle.selectAll("g.arc")
-									.data(this.scores)
+									.data(this.arcs)
 									.enter()
 									.append("g")
 										.attr("class",function(d){
 											//console.log(d)
-											return "arc "+self.teams_info[d.team_id].nid;
+											return "arc "+(d.team_id?self.teams_info[d.team_id].nid:"tie");
 										})
 		lead_arc.append("path")
 					.attr("d",function(d){
-						console.log(d)
-						let radius=RADIUS+10,
-							a1=self._toRad(self.alpha_scale(d.prev_seconds)),
-							a2=self._toRad(self.alpha_scale(d.seconds));
+						//console.log(d)
+						let radius=RADIUS+5,
+							a1=self._toRad(self.alpha_scale(d.seconds[0])),
+							a2=self._toRad(self.alpha_scale(d.seconds[1]));
 
 						let x1 = radius * Math.cos(Math.PI/2-a1),
 							y1 = -(radius*Math.sin(Math.PI/2-a1)),
 							x2 = radius * Math.cos(Math.PI/2-a2),
 							y2 = -(radius*Math.sin(Math.PI/2-a2));
 
-						let larg_arc = (self.alpha_scale(d.seconds) - self.alpha_scale(d.prev_seconds)> 180)?1:0;
+						let larg_arc = (self.alpha_scale(d.seconds[1]) - self.alpha_scale(d.seconds[0])> 180)?1:0;
 
 						let path="M"+x1+","+y1;
 						//path+="L"+x2+","+y2;

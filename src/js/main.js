@@ -70,13 +70,16 @@ export function init(el, context, config, mediator) {
     function chartNow(matches) {
         console.log(matches);
         
+        d3.select("#rwc")
+            .attr("class","circle")
+
         var pool=d3.select(".pools .contents")
             .selectAll("div.pool")
             .data(["A","B","C","D"])
             .enter()
             .append("div")
                 .attr("class","pool")
-        /*
+        
         pool.append("div")
                 .attr("class","matches")
                 .selectAll("div.match")
@@ -189,7 +192,7 @@ export function init(el, context, config, mediator) {
                                         timeline:true
                                     })    
                                 })
-        */
+        
         var finals=d3.select(".final .contents")
                         .append("div")
                         .attr("class","matches")

@@ -92,4 +92,48 @@
 			}
 		}
 	}
+
+	&.circle {
+		.pools {
+			.pool {
+				.matches {
+					overflow: hidden;
+					.match {
+						width: 200px;
+						height: 200px;
+						float: left;
+					}	
+				}
+			}
+		}
+		.quarter-finals {
+			overflow: hidden;
+			.matches {
+				.match {
+					width:300px;
+					height:300px;
+					float:left;
+				}
+			}
+		}
+		.semi-finals {
+			overflow: hidden;
+			.matches {
+				.match {
+					width:400px;
+					height:400px;
+					float:left;
+				}
+			}
+		}
+		.final {
+			.matches {
+				.match {
+					width:500px;
+					height:500px;
+					margin:0 auto;
+				}
+			}
+		}
+	}
 }
