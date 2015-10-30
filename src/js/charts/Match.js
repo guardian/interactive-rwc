@@ -46,7 +46,6 @@ export default class Match {
 		this.other_team[this.teams[1].id]=this.teams[0].id;
 
 		
-
 		this.events=this.events.map(function(d){
 			return d["$"];
 		});
@@ -64,9 +63,7 @@ export default class Match {
 			return a.seconds - b.seconds;
 		})
 
-		this.events.forEach(function(d,i){
-			d.index=i;
-		})
+		
 
 		let current_scores={};
 		current_scores[this.teams[0].id]=0;
@@ -106,6 +103,7 @@ export default class Match {
 			let moment={
 				team_id:null,
 				score:d3.max([current_scores[self.teams[0].id],current_scores[self.teams[1].id]]),
+				lower_score:d3.min([current_scores[self.teams[0].id],current_scores[self.teams[1].id]]),
 				seconds:d.seconds
 			}
 			if(current_scores[self.teams[0].id]>current_scores[self.teams[1].id]) {
@@ -116,21 +114,7 @@ export default class Match {
 			}
 			self.moments.push(moment)
 
-			/*
-			let arc={
-				team_id:null,
-				score:d3.max([current_scores[self.teams[0].id],current_scores[self.teams[1].id]]),
-				seconds:[self.arcs[i].seconds[1],d.seconds]
-			}
 
-			if(current_scores[self.teams[0].id]>current_scores[self.teams[1].id]) {
-				arc.team_id=self.teams[0].id
-			}
-			if(current_scores[self.teams[0].id]<current_scores[self.teams[1].id]) {
-				arc.team_id=self.teams[1].id
-			}
-			self.arcs.push(arc)
-			*/
 			
 		})
 
@@ -147,7 +131,9 @@ export default class Match {
 			if(moment.seconds!==this.moments[this.moments.length-1].seconds) {
 				let arc={
 					team_id:this.moments[this.moments.length-1].team_id,
-					seconds:[this.moments[this.moments.length-1].seconds,moment.seconds]
+					seconds:[this.moments[this.moments.length-1].seconds,moment.seconds],
+					score:[this.moments[this.moments.length-1].score,moment.score],
+					lower_score:[this.moments[this.moments.length-1].lower_score,moment.lower_score],
 				}
 				this.arcs.push(arc);	
 			}
@@ -156,7 +142,9 @@ export default class Match {
 
 		this.arcs.push({
 			team_id:null,
-			seconds:[0,this.moments[this.moments.length-1].seconds]
+			seconds:[0,this.moments[this.moments.length-1].seconds],
+			score:[0,this.moments[this.moments.length-1].score],
+			lower_score:[0,this.moments[this.moments.length-1].lower_score]
 		})
 
 		//console.log("ARCS",this.arcs)

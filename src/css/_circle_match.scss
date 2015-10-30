@@ -11,7 +11,8 @@
 			fill:none;
 			stroke-width:3;
 			shape-rendering: optimizeSpeed;
-			stroke-linecap: round;		}
+			stroke-linecap: round;
+		}
 		text.team-name {
 			text-anchor:start;
 			font-weight: bold;
@@ -20,17 +21,18 @@
 		.events {
 
 			.evt {
-
+				
 				&.hidden {
 					opacity:0.2;
 				}
 
 				line {
+					visibility: hidden;
 					fill:none;
 					stroke:#ddd;
 					stroke-width:1;
 					shape-rendering: optimizeSpeed;
-					//stroke-dasharray: 1,5;
+					stroke-dasharray: 1,5;
 					stroke-linecap:round;
 				}
 
@@ -40,20 +42,34 @@
 		.lead-circle {
 			g.arc {
 				path {
-					fill:none;
-					stroke-width:10;
+					
+					//stroke:#000;
+					stroke-width:3;
 					shape-rendering: optimizeSpeed;
 					stroke-linecap:butt;
+					fill-opacity:0.25;
+				}
+				path.bg {
+					stroke:none;
 				}
 				&.tie {
 					path {
-						stroke:#ddd;	
+						stroke:#ddd;
+						fill:none;
+					}
+					path.bg {
+						stroke:none;
 					}
 				}
 			}
 		}
 		.axes {
 			circle {
+				fill:none;
+				stroke-width:1;
+				stroke:#ddd;
+			}
+			path {
 				fill:none;
 				stroke-width:1;
 				stroke:#ddd;
@@ -67,6 +83,20 @@
 			text {
 				fill:#ddd;
 				text-anchor:middle;
+
+				&.m-0 {
+					text-anchor:end;
+				}
+				&.m-40 {
+					text-anchor:end;
+				}
+				&.m-60 {
+					text-anchor:end;
+				}
+
+				&.score {
+					text-anchor: start;
+				}
 			}
 		}
 	}
@@ -87,7 +117,7 @@
 		.events {
 
 			.evt {
-
+				visibility: hidden;
 				&.hidden {
 					opacity:0.2;
 				}
@@ -97,6 +127,7 @@
 					stroke:#ddd;
 					stroke-width:1;
 					stroke-opacity:0.5;
+
 				}
 
 			}
@@ -105,7 +136,7 @@
 		.lead-circle {
 			g.arc {
 				path {
-					stroke-width:5;
+					stroke-width:2;
 				}
 			}
 		}

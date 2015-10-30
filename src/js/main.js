@@ -72,7 +72,7 @@ export function init(el, context, config, mediator) {
         
         d3.select("#rwc")
             .attr("class","circle")
-
+        
         var pool=d3.select(".pools .contents")
             .selectAll("div.pool")
             .data(["A","B","C","D"])

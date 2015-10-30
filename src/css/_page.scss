@@ -17,9 +17,20 @@ body {
     }
 
     .intro {
+        padding-top:15px;
 		h2 {
-			font-size:20px;	
+			font-size:20px;
+            margin-bottom:10px;
 		}
+        h4 {
+            @include fs-headline(1);
+            font-size:16px; 
+            margin-bottom:0px;
+        }
+        
+        p {
+            margin-top:5px;
+        }
     	
 		@include mq(tablet) {
 			width:25%;

@@ -5,7 +5,7 @@ $FR:#2B4BC7;
 $SA:#007733;//#063D1E;
 $AR:#27B2E8;
 $IE:#006843;
-$WA:#D90037;
+$WA:#930000;//#D90037;
 $JP:#EF001D;
 $US:#001442;
 $NA:#000F79;
@@ -27,6 +27,11 @@ $colors-list: $SC, $AU, $NZ, $FR, $SA, $AR, $IE, $WA, $JP, $US, $NA, $CA, $TO, $
     	path {
     		stroke: $current-color;	
     	}
+        path.bg {
+            stroke: none;
+            fill:  $current-color !important;
+            fill-opacity:0.5;
+        }
         circle {
         	fill: $current-color;
         }
@@ -42,7 +47,11 @@ $colors-list: $SC, $AU, $NZ, $FR, $SA, $AR, $IE, $WA, $JP, $US, $NA, $CA, $TO, $
 
     g.arc.#{nth($countries-list, $i)} {
         path {
-            stroke: $current-color; 
+            stroke: $current-color;
+            fill:none;
+        }
+        path.bg {
+            fill: $current-color;
         }
     }
     g.status {
@@ -51,5 +60,12 @@ $colors-list: $SC, $AU, $NZ, $FR, $SA, $AR, $IE, $WA, $JP, $US, $NA, $CA, $TO, $
             }
     }
     
-    
+    .intro {
+        h4 {
+            span.#{nth($countries-list, $i)} {
+                color: $current-color;    
+            }
+            
+        }
+    }
 }
