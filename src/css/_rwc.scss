@@ -27,7 +27,9 @@
 	.pools {
 		overflow: hidden;
 		.contents {
-			padding-top:50px;
+			@include mq(tablet) {
+				padding-top:50px;
+			}
 		}
 		.pool {
 			width:100%;
@@ -80,10 +82,12 @@
 		overflow: hidden;
 		.matches {
 			.match {
-				width:calc(50% - 20px);
-				//height:220px;
-				margin:0px 10px 30px;
-				float:left;
+				@include mq(tablet) {
+					width:calc(50% - 20px);
+					//height:220px;
+					margin:0px 10px 30px;
+					float:left;
+				}
 			}
 		}
 	}
@@ -110,14 +114,22 @@
 
 	&.circle {
 		.pools {
+			.intro {
+				display: block;
+			}
 			.contents {
-				width: 75%;
+				@include mq(tablet) {
+					width: 75%;
+				}
 			}
 			.pool {
 				.matches {
 					overflow: hidden;
 					.match {
-						width: 200px;
+						width: 50%;
+						@include mq(tablet) {
+							width: 200px;
+						}
 						//height: 200px;
 						float: left;
 					}	
@@ -128,9 +140,12 @@
 			overflow: hidden;
 			.matches {
 				.match {
-					width:calc(25% - 20px);
-					//height:300px;
-					float:left;
+					width:100%;
+					@include mq(tablet) {
+						width:calc(25% - 20px);
+						//height:300px;
+						float:left;
+					}
 				}
 			}
 		}
@@ -140,17 +155,23 @@
 				margin:0 auto;
 				width:100%;
 				.match {
-					width:calc(50% - 20px);
-					//margin:0 40px 0 0;
-					//height:400px;
-					float:left;
-					text-align: center;
-					svg {
-						width:70%;
-						margin:0 auto;
+					width:100%;
+					@include mq(tablet) {
+						width:calc(50% - 20px);
+						float:left;
+						text-align: center;
+
+						svg {
+							width:70%;
+							margin:0 auto;
+						}
 					}
+					
+					
 					.match-blurb {
-						width:50%;
+						@include mq(tablet) {
+							width:50%;
+						}
 						margin:0 auto;
 						text-align: left;
 					}
@@ -161,7 +182,10 @@
 		.final {
 			.matches {
 				.match {
-					width:500px;
+					width:100%;
+					@include mq(tablet) {
+						width:500px;
+					}
 					//height:500px;
 					margin:0 auto;
 				}

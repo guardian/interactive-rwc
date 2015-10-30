@@ -1,11 +1,8 @@
 import iframeMessenger from 'guardian/iframe-messenger'
 import d3 from 'd3'
 import mainHTML from './text/main.html!text'
-/*import QF_SCvsAU from '../assets/data/QF_SCvsAU.json!json'
-import QF_NZvsFR from '../assets/data/QF_NZvsFR.json!json'
-import QF_IEvsAR from '../assets/data/QF_IEvsAR.json!json'
-import QF_SAvsWA from '../assets/data/QF_SAvsWA.json!json'*/
 import matches_data from '../assets/data/matches.json!json';
+import data from '../assets/data/data.json!json';
 import Match from './charts/CircleMatch';
 import Road from './charts/Road';
 import { matches } from './charts/matches';
@@ -35,7 +32,7 @@ export function init(el, context, config, mediator) {
     });
 
     function loadData() {
-        d3.json("http://localhost:8080",function(data){
+        //d3.json("http://localhost:8080",function(data){
 
             var matches=data.map(function(m){
                 var match={
@@ -65,7 +62,7 @@ export function init(el, context, config, mediator) {
                 return +a.date - +b.date;
             }));
 
-        })
+        //})
     }
     function chartNow(matches) {
         console.log(matches);
