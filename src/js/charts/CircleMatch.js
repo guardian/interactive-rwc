@@ -16,9 +16,19 @@ export default class CircleMatch extends Match {
 		let self=this;
 		let timeline=null;
 
-		let svg=this.container
-					.classed("circle",true)
+		let svg;
+		if(this.options.appendChart) {
+			svg=this.container
+				.classed("circle",true)
+				.append("div")
+					.attr("class","chart")
 					.append("svg")
+		} else {
+			svg=this.container
+				.classed("circle",true)
+				.select("div.chart")
+				.append("svg")
+		}
 					
 
 		let defs = svg.append("defs");
@@ -67,9 +77,9 @@ export default class CircleMatch extends Match {
 		var max_score_delta=40-80;//this.extents.score[1];
 		if(max_score_delta<0) {
 			svg
-				.attr("height",HEIGHT+this.radius_scale(-max_score_delta)*2-40)
-				.style("height",(HEIGHT+this.radius_scale(-max_score_delta)*2-40)+"px");
-			center[1]+=this.radius_scale(-max_score_delta)*1;
+				.attr("height",HEIGHT+this.radius_scale(-max_score_delta)*2-40+(this.options.small?-50:0))
+				.style("height",(HEIGHT+this.radius_scale(-max_score_delta)*2-40+(this.options.small?-50:0))+"px");
+			center[1]+=this.radius_scale(-max_score_delta)*1+(this.options.small?-20:0);
 		}
 
 		//console.log(this.alpha_scale.domain(),this.alpha_scale.range(),"!!!!!")
@@ -301,7 +311,7 @@ export default class CircleMatch extends Match {
 					if(self.extents.score[1]-d.values.score>10) {
 						return 5;
 					}
-					return 12;
+					return 14;
 				})
 				.text(function(d){
 					return self.teams_info[d.key]["short_name"] + " " +d.values.score;
@@ -384,13 +394,13 @@ export default class CircleMatch extends Match {
 				})
 				.text((d) => {
 					if(d.t===0) {
-						return self.options.small?"0'":"KICK OFF";
+						return self.options.small?"0'":"Kick off";
 					}
 					if(d.t===40*60) {
-						return self.options.small?"40'":"HALF TIME";
+						return self.options.small?"40'":"Half time";
 					}
 					if(d.t===this.extents.seconds[1]) {
-						return (self.options.small?"":"END OF MATCH ")+self.extents.minute.minute+"'"
+						return (self.options.small?"":"End of match ")+self.extents.minute.minute+"'"
 					}
 					return (d.t / 60);
 				})
@@ -601,6 +611,8 @@ export default class CircleMatch extends Match {
 
 		let filterMatchAtSeconds = (seconds) => {
 
+			seconds = (typeof seconds!=='undefined')?seconds:self.extents.seconds[1]
+
 			team.select("path")
 				.datum((d) => {
 						var values=d.values.events.filter((d) => {
@@ -666,7 +678,7 @@ export default class CircleMatch extends Match {
 									||
 									d.type=="drop goal");
 						});
-
+					console.log("!!!",seconds,values)
 					let last_event=values[values.length-1],
 						r=self.radius_scale(last_event.score2),
 						a=self._toRad(self.alpha_scale(last_event.seconds2));
@@ -682,16 +694,20 @@ export default class CircleMatch extends Match {
 		}
 
 		svg.on("mousemove",function(){
-						return;
+						//return;
 						let coords=d3.mouse(this),
-							alpha=self._getAlphaFromCoords(coords,[self.width2,self.height2]);
+							alpha=self._getAlphaFromCoords(coords,center);
+
 
 						let seconds=self.alpha_scale.invert(alpha<0?360+alpha:alpha);
 
-						console.log(alpha,seconds)
+						
 
-						filterMatchAtSeconds(seconds)
+						filterMatchAtSeconds((alpha>=0&&alpha<90)?null:seconds)
 
+					})
+			.on("mouseout",function(){
+						filterMatchAtSeconds()
 					})
 
 		
@@ -714,7 +730,7 @@ export default class CircleMatch extends Match {
 		
 		let alpha = Math.atan2(circle_coords[1],circle_coords[0])+Math.PI/2;
 
-		console.log(coords,circle_coords,alpha,this._toDeg(alpha))
+		console.log(":::",coords,circle_coords,alpha,this._toDeg(alpha))
 
 		return this._toDeg(alpha);
 	}

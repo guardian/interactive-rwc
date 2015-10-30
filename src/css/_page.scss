@@ -6,10 +6,13 @@ body {
     overflow: hidden;
     border-top: 1px solid #ddd;
 	
+    &.no-border {
+        border-top:none;
+    }
 
 	@include mq(tablet) {
-		margin-bottom:25px;
-		padding-bottom:25px;
+		//margin-bottom:25px;
+		//padding-bottom:25px;
 	}
 
     > div {
@@ -20,17 +23,9 @@ body {
         padding-top:15px;
 		h2 {
 			font-size:20px;
-            margin-bottom:10px;
+            margin-bottom:20px;
 		}
-        h4 {
-            @include fs-headline(1);
-            font-size:16px; 
-            margin-bottom:0px;
-        }
-        
-        p {
-            margin-top:5px;
-        }
+
     	
 		@include mq(tablet) {
 			width:25%;
@@ -44,7 +39,7 @@ body {
     }
     .contents {
     	@include mq(tablet) {
-			width:75%;
+			width:100%;
 		}
     }
 

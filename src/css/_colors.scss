@@ -60,7 +60,7 @@ $colors-list: $SC, $AU, $NZ, $FR, $SA, $AR, $IE, $WA, $JP, $US, $NA, $CA, $TO, $
             }
     }
     
-    .intro {
+    .match {
         h4 {
             span.#{nth($countries-list, $i)} {
                 color: $current-color;    

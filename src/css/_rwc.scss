@@ -8,6 +8,21 @@
 	}
 	.matches {
 		overflow: hidden;
+
+		h4 {
+            @include fs-headline(1);
+            font-size:16px; 
+            margin-bottom:0px;
+            margin-top:30px;
+            b {
+                @include fs-header(1);
+                font-size: inherit;
+            }
+        }
+        
+        p {
+            margin-top:5px;
+        }
 	}
 	.pools {
 		overflow: hidden;
@@ -95,6 +110,9 @@
 
 	&.circle {
 		.pools {
+			.contents {
+				width: 75%;
+			}
 			.pool {
 				.matches {
 					overflow: hidden;
@@ -110,7 +128,7 @@
 			overflow: hidden;
 			.matches {
 				.match {
-					width:300px;
+					width:calc(25% - 20px);
 					//height:300px;
 					float:left;
 				}
@@ -119,11 +137,25 @@
 		.semi-finals {
 			overflow: hidden;
 			.matches {
+				margin:0 auto;
+				width:100%;
 				.match {
-					width:400px;
+					width:calc(50% - 20px);
+					//margin:0 40px 0 0;
 					//height:400px;
 					float:left;
+					text-align: center;
+					svg {
+						width:70%;
+						margin:0 auto;
+					}
+					.match-blurb {
+						width:50%;
+						margin:0 auto;
+						text-align: left;
+					}
 				}
+
 			}
 		}
 		.final {
