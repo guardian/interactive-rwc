@@ -441,7 +441,7 @@ export default class CircleMatch extends Match {
 					return -self.radius_scale(d)+4;
 				})
 				.text(function(d,i){
-					return d+(!i?" points":"")
+					return d+((!i && self.arrow)?" points":"")
 				})
 		
 		let evt=evts.selectAll("g.evt")
