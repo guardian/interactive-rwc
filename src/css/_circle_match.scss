@@ -1,7 +1,10 @@
 .match.circle {
 	
+	.chart {
+		width: 100%;
+		height: 100%;
+	}
 	
-
 	&.with-timeline svg {
 		height:100%;
 	}
@@ -88,6 +91,7 @@
 
 				&.m-0 {
 					text-anchor:end;
+					font-weight: bold;
 				}
 				&.m-40 {
 					text-anchor:end;

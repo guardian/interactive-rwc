@@ -1,5 +1,6 @@
 import iframeMessenger from 'guardian/iframe-messenger'
 import d3 from 'd3'
+import RAF from './lib/raf'
 import mainHTML from './text/main.html!text'
 import matches_data from '../assets/data/matches.json!json';
 import data from '../assets/data/data.json!json';
@@ -20,8 +21,8 @@ export function init(el, context, config, mediator) {
     el.innerHTML = mainHTML.replace(/%assetPath%/g, config.assetPath);
 
     let frameRequest = requestAnimationFrame(function checkInnerHTML(time) {
-        console.log(time)
-        var b=document.querySelector("#rwc");
+        //console.log(time)
+        var b=document.querySelector(".final");
         if(b && b.getBoundingClientRect().height) {
             cancelAnimationFrame(checkInnerHTML);
             loadData()
@@ -65,7 +66,7 @@ export function init(el, context, config, mediator) {
         //})
     }
     function chartNow(matches) {
-        console.log(matches);
+        //console.log(matches);
         
         d3.select("#rwc")
             .attr("class","circle")
@@ -79,7 +80,7 @@ export function init(el, context, config, mediator) {
                             }))
                             //.enter()
                             //.append("div")
-                                .attr("class","match with-timeline")
+                                .attr("class","match")// with-timeline")
                                 .attr("rel",function(d){
                                     return d.teams[0].nid+" vs "+d.teams[1].nid;
                                 })
@@ -87,7 +88,7 @@ export function init(el, context, config, mediator) {
                                     return d.id;
                                 })
                                 .each(function(d){
-                                    console.log(d)
+                                    //console.log(d)
                                     new Match(d.json,{
                                         id:"#"+d.id,
                                         container:this,
@@ -101,7 +102,8 @@ export function init(el, context, config, mediator) {
                                             left:80,
                                             right:90
                                         },
-                                        timeline:true
+                                        timeline:true,
+                                        arrow:true
                                     })    
                                 })
         
@@ -122,7 +124,6 @@ export function init(el, context, config, mediator) {
                                     return d.id;
                                 })
                                 .each(function(d){
-                                    console.log(d)
                                     new Match(d.json,{
                                         id:"#"+d.id,
                                         container:this,
@@ -161,7 +162,7 @@ export function init(el, context, config, mediator) {
                                     return d.id;
                                 })
                                 .each(function(d){
-                                    console.log(d)
+                                    //console.log(d)
                                     new Match(d.json,{
                                         id:"#"+d.id,
                                         container:this,
@@ -187,12 +188,7 @@ export function init(el, context, config, mediator) {
             })
         
 
-        /*var pool=d3.select(".pools .contents")
-            .selectAll("div.pool")
-            .data(["A","B","C","D"])
-            .enter()
-            .append("div")
-                .attr("class","pool")*/
+        
 
         d3.selectAll(".pools")
                 .each(function(){
@@ -220,7 +216,7 @@ export function init(el, context, config, mediator) {
                                 return d.id;
                             })
                             .each(function(d){
-                                //console.log(d)
+                                ////console.log(d)
                                 new Match(d.json,{
                                     id:"#"+d.id,
                                     container:this,
@@ -266,7 +262,7 @@ export function init(el, context, config, mediator) {
                 })
                 .attr("class","match")
                 .each(function(d){
-                    //console.log(d)
+                    ////console.log(d)
                     new Match(d.json,{
                         id:"#"+d.id,
                         container:this,

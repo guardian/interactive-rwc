@@ -25,60 +25,15 @@ export default class Match {
 		this.container=d3.select(options.container);
 
 		this.timeline=options.timeline;
-		this.arrow=options.arrow;
 
 		this._updateData();
 		
 		this._updateExtents();
-		let self=this;
-		this._createSVG(function(){
-			self._buildChart();
-		});
-
-		//this._buildChart();
+		this._buildChart();
 
 
 	}
-	_createSVG(callback) {
 
-		let self=this;
-
-		if(this.options.appendChart) {
-			this.svg=this.container
-				.classed("circle",true)
-				.append("div")
-					.attr("class","chart")
-					.append("svg")
-		} else {
-			this.svg=this.container
-				.classed("circle",true)
-				.select("div.chart")
-				.append("svg")
-		}
-
-		if(callback) {
-			let frameRequest = requestAnimationFrame(function checkSVG(time) {
-
-				let box=self.svg.node().getBoundingClientRect();
-				
-				//console.log(box.width,box.height)
-
-				if(box && (box.width!==300)) {
-					//console.log("yep")
-	
-					self.svg.attr("width",box.width)
-					self.svg.attr("height",box.width+10)
-					
-					callback();
-					return;	
-				} else {
-					frameRequest = requestAnimationFrame(checkSVG);	
-				}
-
-			});
-		}
-
-	}
 	_updateData() {
 		let self=this;
 		
@@ -221,7 +176,148 @@ export default class Match {
 	}
 
 	_buildChart() {
+		let self=this;
+		let timeline=null;
+
+		let svg=this.container.append("svg")
+
+		let box=svg.node().getBoundingClientRect();
+		let WIDTH = box.width,
+			HEIGHT= box.height;
 		
+
+		this.xscale=d3.scale.linear().domain(this.extents.seconds).range([0,WIDTH-(this.margins.left+this.margins.right)])
+		this.yscale=d3.scale.linear().domain([0,this.max_score || this.extents.score]).range([HEIGHT-(this.margins.top+this.margins.bottom),0])
+
+		
+					//.attr("height",HEIGHT)
+						
+
+		let area = d3.svg.line()
+				    .x(function(d) { return self.xscale(d.x); })
+				    .y(function(d) { return self.yscale(d.y); })
+				    .interpolate("step-after")
+		let nested_data=d3.nest()
+							.key(function(d){
+								return d.team_id
+							})
+							.rollup(function(leaves){
+								var events= leaves.filter(function(d){
+												return d.period!="Post Game"
+											});
+								return  {
+										score: d3.max(events.map(function(d){return d.score})),
+										events: events
+								}
+							})
+							.entries(this.events);
+		////console.log(nested_data)
+		let team=svg.append("g")
+						.attr("class","teams")
+						.attr("transform","translate("+this.margins.left+","+this.margins.top+")")
+						.selectAll("g.team")
+						.data(nested_data)
+						.enter()
+						.append("g")
+							.attr("class",function(d){
+								return "team "+self.teams_info[d.key].nid;
+							})
+							.classed("winner",function(d){
+								return self.teams_info[d.key].winner;
+							})
+							.attr("rel",function(d){
+								return d.key;
+							})
+							
+		team.append("path")
+				.attr("d",function(d){
+					return area(d.values.events
+						.filter(function(d){
+							return 	d.type==="first half start"
+									||
+									d.type==="second half end"
+									||
+									d.type==="try"
+									||
+									d.type=="penalty try"
+									||
+									d.type=="conversion"
+									||
+									d.type=="penalty"
+									||
+									d.type=="drop goal";
+						})
+						.map(function(v){
+						////console.log(v.seconds,v.score)
+						return {
+							x:v.seconds,
+							y:v.score
+						}
+					}))
+				})
+
+
+		team.append("circle")
+				.attr("cx",function(d){
+					return self.xscale(self.xscale.domain()[1])
+				})
+				.attr("cy",function(d){
+					return self.yscale(d.values.score)
+				})
+				.attr("r",this.options.small?1.5:3)
+		team.append("text")
+				.attr("class","team-name")
+				.attr("x",function(d){
+					return self.xscale(self.xscale.domain()[1])
+				})
+				.attr("dx",-5)
+				.attr("y",function(d){
+					return self.yscale(d.values.score);
+				})
+				.attr("dy",function(d){
+					////console.log(d.key,d,self.extents.score[1])
+					if(d.values.score<self.extents.score[1]) {
+						return 14;
+					}
+					return -5;
+				})
+				.text(function(d){
+					return self.teams_info[d.key][self.options.country_field||name] + " " +d.values.score;
+				})
+
+		let axes=svg.append("g")
+					.attr("class","axes")
+					.attr("transform","translate("+this.margins.left+","+this.margins.top+")")
+
+		let xAxis = d3.svg.axis()
+				    .scale(this.xscale)
+				    .orient("bottom")
+					.tickValues(function(){
+
+						return d3.range(8).map(function(d){
+							return d*10*60;
+						}).concat([self.extents.seconds[1]])
+
+					}())
+				    .tickFormat(function(d){
+				    	return !(d%60)?d/60:self.extents.minute.minute
+				    })
+				    
+
+		let xaxis=axes.append("g")
+			      .attr("class", "x axis")
+			      .attr("transform", "translate("+0+"," + (this.yscale.range()[0]+1) + ")")
+			      .call(xAxis);
+
+		if(this.timeline) {
+			timeline=new Timeline(nested_data,{
+				xscale:this.xscale,
+				container:this.container,
+				margins:this.margins,
+				teams_info:this.teams_info,
+				country_field:this.options.country_field
+			});
+		}
 	}
 
 }

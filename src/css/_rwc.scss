@@ -8,7 +8,10 @@
 	}
 	.matches {
 		overflow: hidden;
-
+		box-sizing: border-box;
+		* {
+			box-sizing: border-box;
+		}
 		h4 {
             @include fs-headline(1);
             font-size:16px; 
@@ -28,7 +31,7 @@
 		overflow: hidden;
 		.contents {
 			@include mq(tablet) {
-				padding-top:50px;
+				//padding-top:50px;
 			}
 		}
 		.pool {
@@ -142,9 +145,20 @@
 				.match {
 					width:100%;
 					@include mq(tablet) {
-						width:calc(25% - 20px);
+						width:25%;
+						padding:0;
+						margin:0;
 						//height:300px;
 						float:left;
+
+						svg {
+							width:calc(100% - 30px);
+							margin-left:15px;
+						}
+
+						p {
+							padding-right:15px;
+						}
 					}
 				}
 			}
@@ -185,9 +199,15 @@
 					width:100%;
 					@include mq(tablet) {
 						width:500px;
+						//height:500px;
+						margin:0 auto;
+						svg {
+							width: 500px;
+							
+						}
 					}
 					//height:500px;
-					margin:0 auto;
+					
 				}
 			}
 		}

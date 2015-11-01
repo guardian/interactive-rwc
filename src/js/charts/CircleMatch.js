@@ -11,13 +11,12 @@ export default class CircleMatch extends Match {
 		let _degreeRadianRatio = 180 / Math.PI;
 		return rad * _degreeRadianRatio;
 	}
-
 	_buildChart() {
 		let self=this;
 		let timeline=null;
 
-		let svg;
-		if(this.options.appendChart) {
+		let svg=this.svg;
+		/*if(this.options.appendChart) {
 			svg=this.container
 				.classed("circle",true)
 				.append("div")
@@ -28,15 +27,23 @@ export default class CircleMatch extends Match {
 				.classed("circle",true)
 				.select("div.chart")
 				.append("svg")
-		}
+		}*/
 					
 
 		let defs = svg.append("defs");
-		this._createIcons(defs) 
+		this._createIcons(defs);
+		if(this.arrow) {
+			this._createArrow(defs);	
+		}
+		//console.log(this.container, this.container.node().getBoundingClientRect(),this.container.node().innerWidth)
+		
 
-		let box=svg.node().getBoundingClientRect();
+		let box=svg.node().getBoundingClientRect()
 		let WIDTH = box.width,
 			HEIGHT= box.height;
+		//WIDTH=this.container.node().offsetWidth;
+		//console.log("WIDTH",WIDTH)
+		//console.log("HEIGHT",HEIGHT)
 		
 		this.padding={
 			top:this.options.small?5:25,
@@ -59,7 +66,7 @@ export default class CircleMatch extends Match {
 
 		let center = [box.width/2,box.height/2];
 		
-		console.log("EXTENTS",this.extents)
+		//console.log("EXTENTS",this.extents)
 
 		
 
@@ -76,18 +83,21 @@ export default class CircleMatch extends Match {
 		
 		var max_score_delta=40-80;//this.extents.score[1];
 		if(max_score_delta<0) {
-			svg
-				.attr("height",HEIGHT+this.radius_scale(-max_score_delta)*2-40+(this.options.small?-50:0))
-				.style("height",(HEIGHT+this.radius_scale(-max_score_delta)*2-40+(this.options.small?-50:0))+"px");
-			center[1]+=this.radius_scale(-max_score_delta)*1+(this.options.small?-20:0);
+			//console.log(WIDTH,HEIGHT,max_score_delta,this.radius_scale(-max_score_delta),this.radius_scale(-max_score_delta)*2-40+(this.options.small?-50:0))
+			//svg
+			//	.attr("height",HEIGHT+this.radius_scale(-max_score_delta)*2-40+(this.options.small?-50:0))
+			//	.style("height",(HEIGHT+this.radius_scale(-max_score_delta)*2-40+(this.options.small?-50:0))+"px");
+			//center[1]+=this.radius_scale(-max_score_delta)*1+(this.options.small?-20:0);
+			center[1]+=30;
 		}
-
-		//console.log(this.alpha_scale.domain(),this.alpha_scale.range(),"!!!!!")
+		//return;
+		////console.log(this.alpha_scale.domain(),this.alpha_scale.range(),"!!!!!")
 		
 		let circleLine = d3.svg.line()
 				    .x(function(d) { return self.xscale(d.x); })
 				    .y(function(d) { return self.yscale(d.y); })
 				    .interpolate("step-after")
+
 		let nested_data=d3.nest()
 							.key(function(d){
 								return d.team_id
@@ -106,6 +116,22 @@ export default class CircleMatch extends Match {
 		let axes=svg.append("g")
 					.attr("class","axes")
 					.attr("transform","translate("+center[0]+","+center[1]+")");
+		if(this.arrow) {
+			axes.append("path")
+				.attr("d",function(d){
+					let r=RADIUS+self.padding.top+20,
+						a=self._toRad(110),
+						x = r * Math.cos(Math.PI/2-a),
+						y = -(r*Math.sin(Math.PI/2-a)),
+						path="M"+r+",0";
+						path+="A"+r+" "+r+" 0 0 1 "+x+" "+y;
+
+
+					return path;
+				})
+				.style("marker-end","url(#markerArrow)");	
+		}
+		
 
 		let evts=svg.append("g")
 					.attr("class","events")
@@ -184,10 +210,10 @@ export default class CircleMatch extends Match {
 				})
 					.attr("d",(p) => {
 						
-						console.log(p)
+						//console.log(p)
 
 						var path="";
-						//console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
+						////console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
 
 						p.filter(function(d){return (typeof d.x2 !== 'undefined');}).forEach(function(d){
 							
@@ -253,10 +279,10 @@ export default class CircleMatch extends Match {
 					})
 					.attr("d",(p) => {
 						
-						console.log(p)
+						//console.log(p)
 
 						var path="";
-						//console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
+						////console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
 
 						p.filter(function(d){return (typeof d.x2 !== 'undefined');}).forEach(function(d){
 							
@@ -297,14 +323,14 @@ export default class CircleMatch extends Match {
 					return d.y1
 				})
 				.attr("dy",function(d){
-					//console.log(d.key,d,self.extents.score[1])
+					////console.log(d.key,d,self.extents.score[1])
 					/*var delta=RADIUS - Math.abs(d.y1);
-					console.log(d,d.y1,RADIUS,delta)
+					//console.log(d,d.y1,RADIUS,delta)
 					if(delta>0 && delta<9) {
 						return 10;
 					}
 					return "0.25em";*/
-					console.log("DDDDD",d)
+					//console.log("DDDDD",d)
 					if(self.extents.score[1]===d.values.score) {
 						return 5;
 					}
@@ -372,7 +398,7 @@ export default class CircleMatch extends Match {
 				.attr("dx",(d,i) => {
 					if(d.t===20*60) {
 						return 5;
-					}""
+					}
 					if(d.t===40*60) {
 						return 0;
 					}
@@ -414,8 +440,8 @@ export default class CircleMatch extends Match {
 				.attr("y",function(d){
 					return -self.radius_scale(d)+4;
 				})
-				.text(function(d){
-					return d;
+				.text(function(d,i){
+					return d+(!i?" points":"")
 				})
 		
 		let evt=evts.selectAll("g.evt")
@@ -502,13 +528,13 @@ export default class CircleMatch extends Match {
 									.enter()
 									.append("g")
 										.attr("class",function(d){
-											//console.log(d)
+											////console.log(d)
 											return "arc "+(d.team_id?self.teams_info[d.team_id].nid:"tie");
 										})
 		/*lead_arc.append("path")
 					.attr("class","bg")
 					.attr("d",function(d){
-						//console.log(d)
+						////console.log(d)
 						let radius=RADIUS+5,
 							r1=self.radius_scale(d.score[0]),
 							r2=self.radius_scale(d.score[1]),
@@ -545,7 +571,7 @@ export default class CircleMatch extends Match {
 		lead_arc.append("path")
 					.attr("class","bg")
 					.attr("d",function(d){
-						console.log(d)
+						//console.log(d)
 						let radius=self.radius_scale(d.lower_score[0]),//RADIUS+5,
 							r1=self.radius_scale(d.score[0]),
 							//r2=self.radius_scale(d.score[1]),
@@ -581,7 +607,7 @@ export default class CircleMatch extends Match {
 					})
 		/*lead_arc.append("path")
 					.attr("d",function(d){
-						//console.log(d)
+						////console.log(d)
 						let radius=RADIUS+5,
 							r1=self.radius_scale(d.score[0]),
 							r2=self.radius_scale(d.score[1]),
@@ -636,10 +662,10 @@ export default class CircleMatch extends Match {
 					})
 					.attr("d",(p) => {
 						
-						//console.log(p)
+						////console.log(p)
 
 						var path="";
-						//console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
+						////console.log(i,"radius:",radius,"alpha",alpha,Math.PI/2-alpha,self._toDeg(Math.PI/2-alpha))
 
 						p.filter((d) => {return (typeof d.x2 !== 'undefined');}).forEach((d) => {
 							
@@ -678,7 +704,7 @@ export default class CircleMatch extends Match {
 									||
 									d.type=="drop goal");
 						});
-					console.log("!!!",seconds,values)
+					//console.log("!!!",seconds,values)
 					let last_event=values[values.length-1],
 						r=self.radius_scale(last_event.score2),
 						a=self._toRad(self.alpha_scale(last_event.seconds2));
@@ -730,11 +756,29 @@ export default class CircleMatch extends Match {
 		
 		let alpha = Math.atan2(circle_coords[1],circle_coords[0])+Math.PI/2;
 
-		console.log(":::",coords,circle_coords,alpha,this._toDeg(alpha))
+		//console.log(":::",coords,circle_coords,alpha,this._toDeg(alpha))
 
 		return this._toDeg(alpha);
 	}
+	_createArrow(defs) {
 
+		defs.append("marker")
+				.attr({
+					id:"markerArrow",
+					markerWidth:13,
+					markerHeight:13,
+					refX:8,
+					refY:6,
+					orient:"auto"
+				})
+				.append("path")
+					.attr("d","M2,2 L2,11 L10,6 L2,2")
+					.style({
+						fill:"#767676",
+						stroke:"none"
+					})
+
+	}
 	_createIcons(defs) {
 
 		//penalty
