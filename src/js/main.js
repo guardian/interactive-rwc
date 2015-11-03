@@ -95,6 +95,9 @@ export function init(el, context, config, mediator) {
                                         teams:d.teams,
                                         max_score:65,
                                         country_field:"name",
+                                        extralarge:true,
+                                        cup:true,
+                                        config:config,
                                         small:false,
                                         margins:{
                                             top:20,

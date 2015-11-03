@@ -19,8 +19,16 @@
 		text.team-name {
 			@include fs-header(1);
 			font-size:15px;
+			font-weight: 300;
 			text-anchor:start;
-			font-weight: bold;
+
+			&.large {
+				font-size:18px;
+			}
+
+			tspan {
+				font-weight: bold;
+			}
 		}
 
 		.events {
@@ -30,14 +38,19 @@
 				&.hidden {
 					opacity:0.2;
 				}
-
+				&.hover {
+					line {
+						visibility: visible;	
+					}
+					
+				}
 				line {
 					visibility: hidden;
 					fill:none;
-					stroke:#ddd;
+					stroke:#aaa;
 					stroke-width:1;
 					shape-rendering: optimizeSpeed;
-					stroke-dasharray: 1,5;
+					//stroke-dasharray: 1,5;
 					stroke-linecap:round;
 				}
 
@@ -87,7 +100,7 @@
 			}
 			text {
 				fill:#ddd;
-				text-anchor:middle;
+				text-anchor:end;
 
 				&.m-0 {
 					text-anchor:end;
@@ -127,7 +140,12 @@
 				&.hidden {
 					opacity:0.2;
 				}
-
+				&.hover {
+					visibility: visible;
+					line {
+						visibility: visible;	
+					}
+				}
 				line {
 					fill:none;
 					stroke:#ddd;

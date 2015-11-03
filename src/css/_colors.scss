@@ -68,4 +68,9 @@ $colors-list: $SC, $AU, $NZ, $FR, $SA, $AR, $IE, $WA, $JP, $US, $NA, $CA, $TO, $
             
         }
     }
+    .tooltip {
+        .#{nth($countries-list, $i)} {
+            color: $current-color;    
+        }
+    }
 }

@@ -3,7 +3,8 @@ export default class Match {
 
 	constructor(data,options) {
 
-		////console.log("Match")
+		//console.log("Match")
+		//console.log(options)
 		//console.log(data);
 
 		this.options=options;
@@ -143,6 +144,7 @@ export default class Match {
 			}
 			
 			d.score=current_scores[d.team_id];
+			d.other_score=current_scores[self.other_team[d.team_id]]
 			d.score_index=i;
 
 			let moment={

@@ -1,4 +1,5 @@
 import Match from './Match';
+import Tooltip from './Tooltip';
 export default class CircleMatch extends Match {
 
 	
@@ -59,6 +60,8 @@ export default class CircleMatch extends Match {
 			right:20
 		}
 
+
+
 		let RADIUS=WIDTH/2  - d3.max([this.margins.top,this.margins.bottom]) -  d3.max([this.padding.top,this.padding.bottom]);
 		
 		this.width2=WIDTH/2;
@@ -68,7 +71,39 @@ export default class CircleMatch extends Match {
 		
 		//console.log("EXTENTS",this.extents)
 
-		
+		let tooltip=new Tooltip({
+	    	container:this.container.node(),
+	    	margins:{
+	    		top:0,
+	    		left:this.margins.left,
+	    		right:0,
+	    		bottom:0
+	    	},
+	    	padding:"10px 2px",
+	    	width:90,
+	    	html:"<p><span></span> <span class='evt-type'></span><br/><span class='"+self.teams_info[self.teams[0].id].nid+"'></span> <span class='value "+self.teams_info[self.teams[0].id].nid+"'></span> <br/> <span class='"+self.teams_info[self.teams[1].id].nid+"'></span> <span class='value "+self.teams_info[self.teams[1].id].nid+"'></span></p>",
+	    	indicators:[
+	    		{
+	    			id:"minute-event"
+	    		},
+	    		{
+	    			id:"evt-type",
+	    		},
+	    		{
+	    			id:"team-"+self.teams[0].id,
+	    		},
+	    		{
+	    			id:"score-"+self.teams[0].id
+	    		},
+	    		{
+	    			id:"score-"+self.teams[1].id
+	    		},
+	    		{
+	    			id:"team-"+self.teams[1].id
+	    		}
+	    		
+	    	]
+	    });
 
 		this.xscale=d3.scale.linear().domain(this.extents.seconds).range([0,WIDTH-(this.margins.left+this.margins.right)])
 		this.yscale=d3.scale.linear().domain([0,this.max_score || this.extents.score]).range([HEIGHT-(this.margins.top+this.margins.bottom),0])
@@ -129,6 +164,7 @@ export default class CircleMatch extends Match {
 
 					return path;
 				})
+				//.style("stroke-width",2)
 				.style("marker-end","url(#markerArrow)");	
 		}
 		
@@ -315,10 +351,11 @@ export default class CircleMatch extends Match {
 		
 		team.append("text")
 				.attr("class","team-name")
+				.classed("large",self.options.extralarge)
 				.attr("x",function(d){
 					return d.x1
 				})
-				.attr("dx",5)
+				.attr("dx",15)
 				.attr("y",function(d){
 					return d.y1
 				})
@@ -339,11 +376,24 @@ export default class CircleMatch extends Match {
 					}
 					return 14;
 				})
-				.text(function(d){
-					return self.teams_info[d.key]["short_name"] + " " +d.values.score;
-					return self.teams_info[d.key][self.options.country_field||name] + " " +d.values.score;
+				.html(function(d){
+					//return self.teams_info[d.key]["short_name"] + " " +d.values.score;
+					return self.teams_info[d.key][self.options.country_field||name] + " <tspan>" +d.values.score+"</tspan>";
 				})
 		
+		if(this.options.cup) {
+			team.filter(function(d){
+				return d.key === "850"
+			})
+			.append("image")
+			    .attr("xlink:href",self.options.config.assetPath+"/assets/imgs/rwc-cup.svg")
+			    .attr("x",0)
+			    .attr("y",function(d){
+					return d.y1 - 95
+				})
+			    .attr("width", 80)
+			    .attr("height", 80)
+		}
 		
 
 
@@ -437,15 +487,29 @@ export default class CircleMatch extends Match {
 				.append("text")
 				.attr("class","score")
 				.attr("x",2)
+				.attr("dx",-8)
 				.attr("y",function(d){
-					return -self.radius_scale(d)+4;
+					return self.radius_scale(d)+10;
 				})
 				.text(function(d,i){
+					return d;
 					return d+((!i && self.arrow)?" points":"")
 				})
+		if(self.arrow) {
+			axes.append("text")
+					.attr("class","score")
+					.attr("x",2)
+					.attr("dx",-8)
+					.attr("y",function(d){
+						return self.radius_scale(10)+20;
+					})
+					.text(function(d,i){
+						return "points"
+					})
+		}
 		
 		let evt=evts.selectAll("g.evt")
-					.data(nested_data[0].values.events.concat(nested_data[1].values.events).filter(function(d){
+					.data(nested_data[0].values.events.concat(nested_data[1].values.events).sort(function(a,b){return a.seconds - b.seconds;}).filter(function(d){
 						return d.seconds>0 && 
 						d.type!=="yellow card" && 
 						d.type!=="red card" && 
@@ -464,7 +528,7 @@ export default class CircleMatch extends Match {
 						.attr("class",(d) => {
 							return self.teams_info[d.team_id].nid+" evt "+d.type.replace(/\s/gi,"-");
 						})
-		/*
+		
 		evt
 			.filter((d) => {
 				return d.type !== "red card" && d.type !== "yellow card";
@@ -488,7 +552,7 @@ export default class CircleMatch extends Match {
 					return d.y0;
 				})
 				.attr("x2",(d) => {
-					let r=RADIUS+self.padding.top,//self.radius_scale(d.score),
+					let r=RADIUS,//+self.padding.top,//self.radius_scale(d.score),
 						a=self._toRad(self.alpha_scale(d.seconds));
 						d.__x1 = r * Math.cos(Math.PI/2-a),
 						d.__y1 = -(r*Math.sin(Math.PI/2-a));
@@ -496,11 +560,11 @@ export default class CircleMatch extends Match {
 				})
 				.attr("y2",function(d){
 					return d.__y1;
-				})*/
+				})
 		let icon=evt.append("g")
 				.attr("class","icon")
 				.attr("transform",(d) => {
-					let r=RADIUS+10,//self.radius_scale(d.score),
+					let r=RADIUS+(self.options.small?-10:10),//self.radius_scale(d.score),
 						a=self._toRad(self.alpha_scale(d.seconds));
 						d.___x1 = r * Math.cos(Math.PI/2-a),
 						d.___y1 = -(r*Math.sin(Math.PI/2-a));
@@ -637,8 +701,13 @@ export default class CircleMatch extends Match {
 
 		let filterMatchAtSeconds = (seconds) => {
 
+			let show_tooltip=(typeof seconds!=='undefined')
+
 			seconds = (typeof seconds!=='undefined')?seconds:self.extents.seconds[1]
 
+
+
+			/*
 			team.select("path")
 				.datum((d) => {
 						var values=d.values.events.filter((d) => {
@@ -679,12 +748,73 @@ export default class CircleMatch extends Match {
 
 						return path;
 					})
-
-
-			evt.classed("hidden",(d) => {
+			*/
+			
+			evt
+			//.classed("hover",false)
+			.classed("hidden",(d) => {
 				return d.seconds > seconds;
 			})
 
+			let prev_evt=null,
+				__evt;
+			evt.each(function(d,i){
+				if(d.seconds<=seconds) {
+					__evt=d;
+				}
+			})
+			if(__evt) {
+				evt.classed("hover",function(d){
+					return d.seconds===__evt.seconds;
+				});	
+			}
+			
+
+
+			//console.log("show tooltip at",__evt,self.other_team)
+			if(!show_tooltip || !__evt) {
+				tooltip.hide();
+				return;
+			}
+			tooltip.show([
+					{
+						id:"minute-event",
+						value:__evt.minute+"'"
+					},
+					{
+						id:"evt-type",
+						value:__evt.type
+					},
+					{
+						id:"team-"+self.teams[0].id,//__evt.team_id,
+						//value:(__evt.team_id===self.teams[0].id)?self.teams_info[self.teams[0].id].nid:self.teams_info[self.teams[1].id].nid
+						value:self.teams_info[self.teams[0].id].nid
+					},
+					{
+						id:"score-"+self.teams[0].id,//__evt.team_id,
+						//value:__evt.score
+						value:(__evt.team_id===self.teams[0].id)?__evt.score:__evt.other_score
+					},
+					{
+						id:"team-"+self.teams[1].id,//self.other_team[__evt.team_id].id,
+						value:self.teams_info[self.teams[1].id].nid
+						//value:"CIAO"
+						//value:__evt.team_id
+						//value:(__evt.team_id===self.teams[0].id)?self.teams_info[self.teams[0].id].nid:self.teams_info[self.teams[1].id].nid
+					},
+					{
+						id:"score-"+self.teams[1].id,//self.other_team[__evt.team_id].id,
+						//value:__evt.other_score
+						value:(__evt.team_id===self.teams[1].id)?__evt.score:__evt.other_score
+					}
+					
+				],
+				center[0]+__evt.___x1,
+				center[1]+__evt.___y1,
+				null
+			);
+
+			/*
 			team.select("circle")
 				.attr("cx",function(d){
 					var values=d.values.events.filter((d) => {
@@ -715,7 +845,7 @@ export default class CircleMatch extends Match {
 				.attr("cy",function(d){	
 					return d.__ty1;
 				})
-				
+				*/
 
 		}
 
@@ -734,6 +864,7 @@ export default class CircleMatch extends Match {
 					})
 			.on("mouseout",function(){
 						filterMatchAtSeconds()
+
 					})
 
 		
@@ -775,7 +906,8 @@ export default class CircleMatch extends Match {
 					.attr("d","M2,2 L2,11 L10,6 L2,2")
 					.style({
 						fill:"#767676",
-						stroke:"none"
+						stroke:"none",
+						"stroke-width":"0 !important"
 					})
 
 	}

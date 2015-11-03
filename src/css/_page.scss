@@ -5,6 +5,7 @@ body {
 	position: relative;
     overflow: hidden;
     border-top: 1px solid #ddd;
+    padding:6px 0 24px 0px;
 	
     &:first-child {
         border-top:none;
@@ -78,4 +79,8 @@ body {
     		}
     	}
     }
+}
+.sources {
+    @include fs-textSans(1);
+    color:#767676;
 }
